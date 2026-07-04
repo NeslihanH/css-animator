@@ -44,3 +44,25 @@ under M4 (Polish & Launch), which is still an open/undiscussed milestone.
 Next: M0.2 - GitHub repo + GitHub Pages deploy pipeline. `gh` CLI is not
 installed locally, so repo creation goes through the GitHub web UI with the
 user, walked through one step at a time (playbook setup-guidance mode).
+
+## 2026-07-04 - M0.2: GitHub Pages deploy pipeline
+
+User created `https://github.com/NeslihanH/css-animator` and pushed the M0.1
+commit themselves. Added Vite `base: '/css-animator/'` and a matching
+`BrowserRouter basename` for the project-site subpath, plus a GitHub Actions
+workflow (`.github/workflows/deploy.yml`) that builds and deploys to Pages on
+push to `main`.
+
+Hit a real snag: the user's local git credential (PAT) lacks the `workflow`
+scope, so pushing a commit that touches `.github/workflows/*` was rejected.
+Rather than walking a junior user through editing PAT scopes, worked around it
+by dropping the workflow file from the local commit and having the user add
+it once via the GitHub web UI (which isn't scope-restricted). This produced a
+second, independent commit for the same file - user apparently also has a
+local IDE git integration that created its own commit for it, so the branch
+briefly diverged (two commits, identical file content). Merged cleanly
+(`git merge origin/main`, no conflicts since content matched) and pushed.
+
+Pending: user to confirm GitHub Pages "Source: GitHub Actions" setting and a
+green Actions run, then verify the live site at
+`https://neslihanh.github.io/css-animator/`.
