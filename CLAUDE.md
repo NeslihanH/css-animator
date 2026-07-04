@@ -24,10 +24,8 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**Current milestone: M0 - Project Setup. M0.1 done. M0.2 (GitHub Pages deploy
-pipeline) pushed to `https://github.com/NeslihanH/css-animator.git` - pending
-user confirmation of the Pages "Source: GitHub Actions" setting and a green
-Actions run at `https://neslihanh.github.io/css-animator/`.**
+**M0 done. Live at `https://neslihanh.github.io/css-animator/`. M1.1 done.
+Current milestone: M1 - Scroll Animations, M1.2 next.**
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -57,11 +55,11 @@ Opens at `http://localhost:5173` by default.
 
 ## Milestone checklist
 
-- [ ] **M0 - Project Setup**
+- [x] **M0 - Project Setup**
   - [x] M0.1 - Vite + React scaffold, Framer Motion + react-router-dom installed, base layout/nav
-  - [ ] M0.2 - Git remote + GitHub Pages deploy pipeline, empty shell verified live
+  - [x] M0.2 - Git remote + GitHub Pages deploy pipeline, empty shell verified live
 - [ ] **M1 - Scroll Animations** (4 examples)
-  - [ ] M1.1 - Fade & slide-in on scroll (`whileInView`)
+  - [x] M1.1 - Fade & slide-in on scroll (`whileInView`)
   - [ ] M1.2 - Staggered list reveal on scroll
   - [ ] M1.3 - Parallax scroll effect (`useScroll` + `useTransform`)
   - [ ] M1.4 - Scroll progress bar

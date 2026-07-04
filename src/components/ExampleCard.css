@@ -1,0 +1,26 @@
+.example-card {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.example-card:first-of-type {
+  margin-top: 2.5rem;
+}
+
+.example-card h2 {
+  margin: 0 0 0.4rem;
+  font-size: 1.3rem;
+  color: var(--text-h);
+}
+
+.example-description {
+  margin: 0 0 1.5rem;
+  max-width: 560px;
+}
+
+.example-demo {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+}
