@@ -63,6 +63,48 @@ local IDE git integration that created its own commit for it, so the branch
 briefly diverged (two commits, identical file content). Merged cleanly
 (`git merge origin/main`, no conflicts since content matched) and pushed.
 
-Pending: user to confirm GitHub Pages "Source: GitHub Actions" setting and a
-green Actions run, then verify the live site at
+Pages Source was already correctly set to "GitHub Actions"; the first deploy
+failure ("Deployment failed, try again later") was a transient first-run
+issue, resolved by re-running the job. Separately fixed the root cause of the
+push rejections: the user's classic PAT was missing the `workflow` scope:
+added it via https://github.com/settings/tokens (same token string, no
+keychain changes needed), confirmed by pushing the Node 20 -> 22 bump
+directly without issue. Site confirmed live and working at
 `https://neslihanh.github.io/css-animator/`.
+
+M0 is complete. Next: M1.1 - fade & slide-in on scroll, using Framer Motion's
+`whileInView`.
+
+## 2026-07-04 - M1.1: fade & slide-in, three rounds of visual tuning
+
+Built `ExampleCard` (shared wrapper: title, description, demo area) and
+`FadeSlideIn` (three boxes fading + sliding up on scroll via `whileInView`).
+First cut used `initial y: 40`, `duration 0.5`, `viewport amount 0.4`, big
+`gap: 50vh` before the first box - user said the animation "wasn't noticeable
+at all." Root cause: with only 4rem of top padding, the first box was already
+visible on page load, so it animated before the user had a chance to scroll
+and look.
+
+Iterated three times against direct user feedback:
+1. Pushed the whole stack down (`padding-top: 70vh`, `gap: 60vh`) and slowed
+   the animation (duration 0.7, y 80, viewport amount 0.5) - user said the
+   boxes were now too far apart and it still didn't read as a fade.
+2. Tightened spacing (`gap: 30vh`, `padding-top: 45vh`), slowed further
+   (duration 1.1) - user said the top padding now looked like a broken/empty
+   page.
+3. Cut top padding to `8vh` (still enough that nothing intersects on load,
+   just doesn't feel like dead space), lowered the `viewport` trigger
+   threshold to `amount: 0.2` (animation starts as soon as a sliver is
+   visible, not at 50%), bumped distance/duration further (y 100, duration
+   1.3). Also tried adding a "Scroll down to see each box animate in" hint
+   text - user didn't like it, removed.
+
+Final approved version: `padding: 8vh 0 4rem`, `gap: 25vh`, `y: 100 -> 0`,
+`opacity 0 -> 1`, `viewport={{ once: true, amount: 0.2 }}`,
+`transition={{ duration: 1.3, ease: 'easeOut' }}`. Lesson for future scroll
+examples in M1: trigger threshold (`viewport.amount`) matters more for
+perceived "obviousness" than duration alone - a low `amount` catching the
+element early reads much clearer than a high one that waits until it's
+already half in view.
+
+Next: M1.2 - staggered list reveal on scroll.
