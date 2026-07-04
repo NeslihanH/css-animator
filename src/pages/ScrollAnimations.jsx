@@ -1,5 +1,6 @@
 import ExampleCard from '../components/ExampleCard.jsx'
 import FadeSlideIn from '../examples/FadeSlideIn.jsx'
+import StaggerReveal from '../examples/StaggerReveal.jsx'
 
 function ScrollAnimations() {
   return (
@@ -13,6 +14,12 @@ function ScrollAnimations() {
         description="Each box animates in independently the first time it enters the viewport. Scroll down to see all three."
       >
         <FadeSlideIn />
+      </ExampleCard>
+      <ExampleCard
+        title="Staggered list reveal"
+        description="The whole group animates in together, but each item is delayed slightly after the previous one."
+      >
+        <StaggerReveal />
       </ExampleCard>
     </div>
   )

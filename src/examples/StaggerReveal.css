@@ -1,0 +1,19 @@
+.stagger-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.stagger-item {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}

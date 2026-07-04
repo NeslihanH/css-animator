@@ -108,3 +108,12 @@ element early reads much clearer than a high one that waits until it's
 already half in view.
 
 Next: M1.2 - staggered list reveal on scroll.
+
+## 2026-07-04 - M1.2: staggered list reveal
+
+Built `StaggerReveal`: a 5-item grid using Framer Motion `variants` with
+`staggerChildren: 0.15` on the parent, triggered by `whileInView` at the same
+tuned `amount: 0.2` threshold as M1.1. Approved on the first pass, no
+iteration needed this time.
+
+Next: M1.3 - parallax scroll effect (`useScroll` + `useTransform`).
