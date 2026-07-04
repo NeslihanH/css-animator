@@ -24,9 +24,10 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**Current milestone: M0 - Project Setup. M0.1 done, remote set to
-`https://github.com/NeslihanH/css-animator.git`. M0.2 (GitHub Pages deploy
-pipeline) implemented, pending push + one manual GitHub Pages settings step.**
+**Current milestone: M0 - Project Setup. M0.1 done. M0.2 (GitHub Pages deploy
+pipeline) pushed to `https://github.com/NeslihanH/css-animator.git` - pending
+user confirmation of the Pages "Source: GitHub Actions" setting and a green
+Actions run at `https://neslihanh.github.io/css-animator/`.**
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
