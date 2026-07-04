@@ -8,6 +8,14 @@
   margin-top: 2.5rem;
 }
 
+.example-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .example-card h2 {
   margin: 0 0 0.4rem;
   font-size: 1.3rem;
@@ -19,8 +27,28 @@
   max-width: 560px;
 }
 
+.example-code-toggle {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.example-code-toggle:hover {
+  box-shadow: var(--shadow);
+}
+
 .example-demo {
   border: 1px dashed var(--border);
   border-radius: 12px;
   padding: 2rem;
+}
+
+.example-card .code-block {
+  margin: 0 0 1.5rem;
 }

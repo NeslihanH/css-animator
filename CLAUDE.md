@@ -24,8 +24,9 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**M0 done. Live at `https://neslihanh.github.io/css-animator/`. M1.1, M1.2
-done. Current milestone: M1 - Scroll Animations, M1.3 next.**
+**M0 done. Live at `https://neslihanh.github.io/css-animator/`. M1.1-M1.3 done,
+plus a code viewer retrofit (every example has a "Show code" toggle). Current
+milestone: M1 - Scroll Animations, M1.4 next.**
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -61,7 +62,10 @@ Opens at `http://localhost:5173` by default.
 - [ ] **M1 - Scroll Animations** (4 examples)
   - [x] M1.1 - Fade & slide-in on scroll (`whileInView`)
   - [x] M1.2 - Staggered list reveal on scroll
-  - [ ] M1.3 - Parallax scroll effect (`useScroll` + `useTransform`)
+  - [x] M1.3 - Parallax scroll effect (`useScroll` + `useTransform`)
+  - [x] Code viewer - "Show code" toggle on every `ExampleCard`, real source via
+        Vite `?raw` import + `prism-react-renderer` syntax highlighting.
+        Retrofitted into M1.1-M1.3, applies to all future examples too.
   - [ ] M1.4 - Scroll progress bar
 - [ ] **M2 - Page Transitions** (3 examples)
   - [ ] M2.1 - Route fade/slide transition (`AnimatePresence` + react-router)
@@ -73,7 +77,9 @@ Opens at `http://localhost:5173` by default.
   - [ ] M3.3 - Form input focus/error animation
   - [ ] M3.4 - Animated loading spinner / skeleton loader
 - [ ] **M4 - Polish & Launch** (scope not locked, to be re-discussed before starting)
-  - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet - candidate for this milestone)
+  - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet;
+        includes the global `#root { text-align: center }` leftover - candidate
+        for this milestone)
   - [ ] Responsive check
   - [ ] `prefers-reduced-motion` support
   - [ ] README + final deploy + publishing check

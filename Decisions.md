@@ -42,3 +42,17 @@ Decision: M4's scope is not locked - will be revisited and discussed again
 before work on it starts.
 Rationale: user explicitly asked to defer that conversation until M1-M3 are
 further along.
+
+## D6 - Every example ships with a visible, always-accurate source view
+
+Context: examples originally only showed the live demo. For an open-source
+showcase, seeing the code is the point - user flagged this mid-M1. Considered
+a plain-text panel, a syntax-highlighted panel, or a "View on GitHub" link.
+Decision: syntax-highlighted inline panel (`prism-react-renderer`), toggled
+via a "Show code" button on `ExampleCard`, sourced through Vite's `?raw`
+import rather than a hand-copied string.
+Rationale: `?raw` import guarantees the displayed code always matches the
+real component (single source of truth, no drift as examples get tweaked);
+inline + highlighted keeps the reader on the page instead of bouncing to
+GitHub, which matters more for a showcase meant to impress. Applies
+retroactively to all M1 examples and to every example going forward.

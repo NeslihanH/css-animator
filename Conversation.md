@@ -117,3 +117,36 @@ tuned `amount: 0.2` threshold as M1.1. Approved on the first pass, no
 iteration needed this time.
 
 Next: M1.3 - parallax scroll effect (`useScroll` + `useTransform`).
+
+## 2026-07-04 - M1.3 + code viewer retrofit
+
+Built `ParallaxScroll`: two blobs moving at different speeds via `useScroll`
+(scoped to the section with a ref) + `useTransform`, no iteration needed.
+
+Mid-flight, the user raised a real scope gap: examples only showed the live
+demo, not the underlying code - weak for something meant to be an open-source
+showcase. Treated as a living-roadmap addition rather than silently folding it
+in. Presented three options (plain-text code panel, syntax-highlighted panel,
+or a GitHub link); user picked syntax-highlighted inline, so:
+
+- Added `prism-react-renderer` (small, no separate CSS/theme file needed).
+- Built `CodeBlock` (wraps `Highlight`) and added a `code` prop + "Show
+  code"/"Hide code" toggle to `ExampleCard`.
+- Source is pulled via Vite's `?raw` import suffix (e.g.
+  `import Source from '../examples/FadeSlideIn.jsx?raw'`) rather than copied
+  by hand, so the displayed code can never drift from the real component.
+- Retrofitted into all three existing M1 examples; will apply the same
+  pattern going forward for M2/M3.
+
+Two rounds of layout feedback: the code panel originally rendered after the
+demo, which for a tall demo (like the 70vh parallax section) put it very far
+below its own toggle button - moved the `CodeBlock` to render between the
+header and the demo instead. Then the code text appeared centered - traced to
+a global `#root { text-align: center }` left over from the Vite scaffold
+template, inherited by everything including `<pre>` content. Fixed locally by
+forcing `text-align: left` on `.code-block` rather than touching the
+site-wide rule. The broader "everything is centered" look is left alone for
+now and logged under M4 (visual design pass), since the user's original "UI'yi
+beğenmedim" feedback likely covers this too.
+
+Next: M1.4 - scroll progress bar.
