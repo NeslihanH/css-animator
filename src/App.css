@@ -42,3 +42,9 @@ main {
   margin: 0;
   font-size: 0.9rem;
 }
+
+.transition-hint {
+  margin: 0;
+  font-weight: 600;
+  color: var(--accent);
+}
