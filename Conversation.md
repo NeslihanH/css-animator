@@ -199,3 +199,62 @@ the backdrop contained within the demo box (`position: absolute` inside a
 consistent with M1's self-contained-demo pattern. Approved without iteration.
 
 Next: M2.3 - modal/overlay open-close transition.
+
+## 2026-07-05 - M2.3, then a real layout bug in the code viewer
+
+Built `ModalDemo`: spring pop-in/out dialog over a backdrop, deliberately
+different motion feel from M2.2's shared layoutId morph. First cut kept the
+backdrop contained within the demo box like M2.2 (`position: absolute`
+inside a `min-height: 320px` wrapper) - user reported the empty reserved
+space made "Show code" feel like it was making the screen grow. Switched the
+backdrop to `position: fixed` covering the full viewport (a real modal, not a
+contained one) and removed the `min-height` hack, since a modal has no reason
+to be boxed into its demo card.
+
+User then reported a second, more specific issue: on the Shared Element and
+Modal examples (not the M1 ones), clicking "Show code" visibly widened the
+whole section left and right by the same amount. Several guesses (text-align
+inheritance, scrollbar-gutter, explicit width/min-width/overflow-x:hidden on
+the component chain) did not fix it. Two screenshots showing the same
+settled-state width proved it wasn't a permanent bug in the obvious place, so
+asked the user to inspect DevTools directly - the box model tooltip showed
+`.example-card` going from 696.77px to 960px wide. A console script measuring
+`.example-card`, `.page`, `main`, and `#root` nailed it: `main`'s width itself
+was 768.8px with code hidden vs 1032px with code shown, while `#root` stayed
+a constant 1126px throughout.
+
+Root cause: `main { max-width: 960px; margin: 0 auto; }` is a **flex item**
+of `#root` (`display: flex; flex-direction: column`). `margin: 0 auto` on a
+flex item disables `align-items: stretch` on the cross axis, so instead of
+filling the container, `main` shrink-to-fits to its content's intrinsic
+width - and that intrinsic width is unreliable because of the `auto-fit` CSS
+Grids used in some examples (`SharedElement`'s card grid, `Home`'s category
+grid, `StaggerReveal`'s grid), which compute differently under indefinite
+(shrink-to-fit) available space depending on what else is on the page. Fix:
+added `width: 100%` (plus `box-sizing: border-box`) to `main` in `App.css`, so
+it always fills `#root` and gets capped by `max-width` consistently,
+regardless of what any child's intrinsic content size happens to be.
+
+Lesson for later CSS work in this codebase: **never combine `margin: 0 auto`
+centering with `max-width` on a flex item without also setting an explicit
+`width`** - the flex item will silently shrink-to-fit instead of centering
+at its intended max size, and the bug only surfaces once some descendant's
+intrinsic width happens to shrink (which is exactly what an `auto-fit` grid
+does under indefinite sizing).
+
+M2 - Page Transitions is fully done (3/3), and this layout bug is fixed
+site-wide (not just for the two examples that exposed it). Next: M3 -
+Micro-interactions, starting with M3.1 (button hover/tap feedback, magnetic
+button).
+
+## 2026-07-05 - M2.3: modal open/close, M2 wrap-up
+
+Built `ModalDemo`: a button opens a spring-based (`type: 'spring', stiffness:
+300, damping: 25`) pop-in dialog over a fading backdrop, both via
+`AnimatePresence`. Deliberately different motion feel from M2.2's shared
+layoutId morph, so the two examples don't read as the same trick twice.
+Approved without iteration.
+
+M2 - Page Transitions is fully done: 3/3 (site-wide route transition, shared
+element morph, modal). Next: M3 - Micro-interactions, starting with M3.1
+(button hover/tap feedback, magnetic button).

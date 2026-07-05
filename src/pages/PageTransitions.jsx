@@ -2,6 +2,8 @@ import ExampleCard from '../components/ExampleCard.jsx'
 import PageTransitionSource from '../components/PageTransition.jsx?raw'
 import SharedElement from '../examples/SharedElement.jsx'
 import SharedElementSource from '../examples/SharedElement.jsx?raw'
+import ModalDemo from '../examples/ModalDemo.jsx'
+import ModalDemoSource from '../examples/ModalDemo.jsx?raw'
 
 function PageTransitions() {
   return (
@@ -25,6 +27,14 @@ function PageTransitions() {
         fileName="SharedElement.jsx"
       >
         <SharedElement />
+      </ExampleCard>
+      <ExampleCard
+        title="Modal open/close"
+        description="A dialog pops in and out with a spring, over a backdrop that fades independently."
+        code={ModalDemoSource}
+        fileName="ModalDemo.jsx"
+      >
+        <ModalDemo />
       </ExampleCard>
     </div>
   )

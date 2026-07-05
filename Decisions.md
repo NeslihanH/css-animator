@@ -61,3 +61,22 @@ Follow-up: added copy-to-clipboard and download-as-file buttons on the same
 code panel (user request, same session). Download uses a `fileName` prop set
 to the example's real source file name, keeping the same "matches reality"
 principle as the `?raw` import itself.
+
+## D7 - `main` must have an explicit `width: 100%`, not just `max-width`
+
+Context: `main` sits directly under `#root`, which is `display: flex;
+flex-direction: column`, making `main` a flex item. With only
+`max-width: 960px; margin: 0 auto;` (no explicit `width`), the browser's
+cross-axis stretch (`align-items: stretch`) gets overridden by the auto
+margins, so `main` shrink-to-fits its content's intrinsic width instead of
+filling the container. That intrinsic width shifted depending on page state
+(768.8px vs 1032px, observed via DevTools) because of `auto-fit` CSS Grids
+elsewhere on the page, which resolve differently under indefinite
+(shrink-to-fit) sizing - this read to the user as the whole page "growing"
+when toggling the code viewer.
+Decision: `main { width: 100%; max-width: 960px; margin: 0 auto; box-sizing:
+border-box; }`.
+Rationale: an explicit `width: 100%` forces `main` to always fill `#root`
+(then get capped by `max-width`), independent of any descendant's intrinsic
+sizing. General rule for this codebase: a flex item centered via
+`margin: 0 auto` always needs an explicit `width` alongside its `max-width`.

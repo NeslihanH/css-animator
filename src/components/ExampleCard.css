@@ -1,4 +1,7 @@
 .example-card {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   margin-top: 3rem;
   padding-top: 2rem;
   border-top: 1px solid var(--border);
@@ -44,6 +47,9 @@
 }
 
 .example-demo {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
   border: 1px dashed var(--border);
   border-radius: 12px;
   padding: 2rem;
