@@ -25,9 +25,8 @@ decisions live here and in `Decisions.md`.
 ## Status
 
 **M0 and M1 done, live at `https://neslihanh.github.io/css-animator/`. Every
-example has a "Show code" toggle with copy + download buttons. M2.1 done
-(site-wide route transitions). Current milestone: M2 - Page Transitions,
-M2.2 next.**
+example has a "Show code" toggle with copy + download buttons. M2.1, M2.2
+done. Current milestone: M2 - Page Transitions, M2.3 next.**
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -72,7 +71,7 @@ Opens at `http://localhost:5173` by default.
 - [ ] **M2 - Page Transitions** (3 examples)
   - [x] M2.1 - Route fade/slide transition (`AnimatePresence` + react-router) -
         applied site-wide to real navigation, not a contained demo box
-  - [ ] M2.2 - Shared element transition (`layoutId`)
+  - [x] M2.2 - Shared element transition (`layoutId`)
   - [ ] M2.3 - Modal/overlay open-close transition
 - [ ] **M3 - Micro-interactions** (4 examples)
   - [ ] M3.1 - Button hover/tap feedback (magnetic button)

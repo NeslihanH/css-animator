@@ -1,0 +1,63 @@
+.shared-element-demo {
+  position: relative;
+  min-height: 140px;
+}
+
+.shared-element-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.shared-element-card {
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-h);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+.shared-element-backdrop {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.shared-element-detail {
+  width: min(320px, 100%);
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-h);
+  background: var(--bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+.shared-element-detail h3 {
+  margin: 0 0 0.75rem;
+}
+
+.shared-element-detail p {
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
+
+.shared-element-detail button {
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 8px;
+  cursor: pointer;
+}
