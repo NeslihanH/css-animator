@@ -274,6 +274,25 @@ fix it. All approved.
 
 Next: M3.2 - animated toggle/switch.
 
+## 2026-07-06 - M3.2, plus GitHub Pages deep-link 404
+
+Built `ToggleSwitch`: a pill track with a thumb sliding via `animate={{ x:
+... }}` and a spring transition, track background color transitioning with
+plain CSS. Approved without iteration.
+
+User then hit a real deployment bug testing the live site: opening
+`https://neslihanh.github.io/css-animator/scroll-animations` directly (or
+refreshing on it) returned GitHub's real 404 page, not the app. Standard
+GitHub Pages + client-side-router issue: the server has no actual file at
+that path, only `index.html` at the root, and react-router only takes over
+once its JS has already loaded via a normal in-app navigation. Fixed with a
+`postbuild` script (`cp dist/index.html dist/404.html`) - GitHub Pages serves
+`404.html` for any unmatched path, so now that response IS the SPA shell,
+and react-router reads the real URL and renders the correct page. No
+`.github/workflows` changes needed, so no PAT scope issue this time.
+
+Next: M3.3 - form input focus/error animation.
+
 ## 2026-07-05 - M2.3: modal open/close, M2 wrap-up
 
 Built `ModalDemo`: a button opens a spring-based (`type: 'spring', stiffness:
