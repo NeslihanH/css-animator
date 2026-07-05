@@ -80,3 +80,36 @@ Rationale: an explicit `width: 100%` forces `main` to always fill `#root`
 (then get capped by `max-width`), independent of any descendant's intrinsic
 sizing. General rule for this codebase: a flex item centered via
 `margin: 0 auto` always needs an explicit `width` alongside its `max-width`.
+
+## D8 - Button feedback is plain hover/tap, not magnetic
+
+Context: M3.1 first shipped as a "magnetic button" (follows the cursor within
+a radius via `onMouseMove` + spring `animate`), matching the milestone's
+original parenthetical name. After tuning it to be more pronounced, the user
+clarified they didn't want position-follow behavior at all, just a standard
+hover/tap response (scale up on hover, scale down on tap, no movement).
+Decision: replaced `MagneticButton` with `HoverButton` (`whileHover={{ scale:
+1.05 }}`, `whileTap={{ scale: 0.95 }}`, plain CSS `:hover` for background/
+shadow). No magnetic variant kept.
+Rationale: user's explicit preference once they saw the effect live - the
+milestone plan's parenthetical was Claude's initial interpretation, not a
+locked requirement.
+
+## D9 - Page-wide text centering needs explicit rules, not just inheritance
+
+Context: `#root { text-align: center }` (from the Vite scaffold) was assumed
+to cascade centering to every page, but several elements stayed visually
+left-aligned: `.page-subtitle` and `.example-description` have `max-width`
+without `margin: 0 auto`, so the box itself hugs the left edge even though
+text-align only centers text *within* that (already left-stuck) box; and
+`.example-header` was a `justify-content: space-between` flex row, which
+positions its text block at the start regardless of text-align.
+Decision: added `.page { text-align: center }` (explicit, not relying solely
+on `#root`'s inherited value), `margin: 0 auto` on `.page-subtitle`, and
+changed `.example-header` to a centered flex column (title, description,
+"Show code" button stacked, all centered) instead of a left/right split row.
+Rationale: user wants a consistently centered look site-wide (this resolves
+part of the "UI'yi beğenmedim" feedback from M0.1 ahead of the full M4 visual
+pass). General rule for this codebase: `max-width` centers nothing by itself -
+always pair it with `margin: 0 auto` (or an equivalent centering rule) if the
+box also needs to be positioned centered, not just narrowed.

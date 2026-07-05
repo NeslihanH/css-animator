@@ -25,8 +25,13 @@ decisions live here and in `Decisions.md`.
 ## Status
 
 **M0, M1, M2 done, live at `https://neslihanh.github.io/css-animator/`. Every
-example has a "Show code" toggle with copy + download buttons. Current
-milestone: M3 - Micro-interactions, starting with M3.1.**
+example has a "Show code" toggle with copy + download buttons. M3.1 done.
+Current milestone: M3 - Micro-interactions, M3.2 next.**
+
+Site-wide text centering: `.page { text-align: center; }` plus `margin: 0
+auto` on any block that also has a `max-width` (needed for `.page-subtitle`
+and would apply to any future centered paragraph) - a `max-width` alone does
+not center a block, it just narrows it and leaves it stuck to the left.
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -74,14 +79,15 @@ Opens at `http://localhost:5173` by default.
   - [x] M2.2 - Shared element transition (`layoutId`)
   - [x] M2.3 - Modal/overlay open-close transition
 - [ ] **M3 - Micro-interactions** (4 examples)
-  - [ ] M3.1 - Button hover/tap feedback (magnetic button)
+  - [x] M3.1 - Button hover/tap feedback (`HoverButton`: scale on hover/tap,
+        no position-follow - see D8)
   - [ ] M3.2 - Animated toggle/switch
   - [ ] M3.3 - Form input focus/error animation
   - [ ] M3.4 - Animated loading spinner / skeleton loader
 - [ ] **M4 - Polish & Launch** (scope not locked, to be re-discussed before starting)
-  - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet;
-        includes the global `#root { text-align: center }` leftover - candidate
-        for this milestone)
+  - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet -
+        still an open candidate for this milestone; the text-centering part of
+        it was resolved ahead of time during M3.1, see D9)
   - [ ] Responsive check
   - [ ] `prefers-reduced-motion` support
   - [ ] README + final deploy + publishing check
