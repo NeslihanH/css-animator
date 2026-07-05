@@ -187,3 +187,15 @@ shared-element and modal techniques don't need real routing to demonstrate
 convincingly.
 
 Next: M2.2 - shared element transition (`layoutId`).
+
+## 2026-07-05 - M2.2: shared element transition
+
+Built `SharedElement`: 3 clickable cards, each with `layoutId={`card-${id}`}`;
+clicking one shows an `AnimatePresence`-controlled detail view sharing the
+same `layoutId`, so Framer Motion morphs the card's position/size directly
+into the expanded view instead of cross-fading two unrelated elements. Kept
+the backdrop contained within the demo box (`position: absolute` inside a
+`position: relative` wrapper) rather than a real fixed full-page overlay,
+consistent with M1's self-contained-demo pattern. Approved without iteration.
+
+Next: M2.3 - modal/overlay open-close transition.

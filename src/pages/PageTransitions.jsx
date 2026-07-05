@@ -1,5 +1,7 @@
 import ExampleCard from '../components/ExampleCard.jsx'
 import PageTransitionSource from '../components/PageTransition.jsx?raw'
+import SharedElement from '../examples/SharedElement.jsx'
+import SharedElementSource from '../examples/SharedElement.jsx?raw'
 
 function PageTransitions() {
   return (
@@ -15,6 +17,14 @@ function PageTransitions() {
         fileName="PageTransition.jsx"
       >
         <p className="transition-hint">↑ Click a nav link above to see it in action ↑</p>
+      </ExampleCard>
+      <ExampleCard
+        title="Shared element transition"
+        description="Click a card: it morphs directly into the expanded detail view using a shared layoutId, instead of just fading between two states."
+        code={SharedElementSource}
+        fileName="SharedElement.jsx"
+      >
+        <SharedElement />
       </ExampleCard>
     </div>
   )
