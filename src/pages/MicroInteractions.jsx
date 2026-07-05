@@ -5,6 +5,8 @@ import ToggleSwitch from '../examples/ToggleSwitch.jsx'
 import ToggleSwitchSource from '../examples/ToggleSwitch.jsx?raw'
 import FormFeedback from '../examples/FormFeedback.jsx'
 import FormFeedbackSource from '../examples/FormFeedback.jsx?raw'
+import LoadingStates from '../examples/LoadingStates.jsx'
+import LoadingStatesSource from '../examples/LoadingStates.jsx?raw'
 
 function MicroInteractions() {
   return (
@@ -36,6 +38,14 @@ function MicroInteractions() {
         fileName="FormFeedback.jsx"
       >
         <FormFeedback />
+      </ExampleCard>
+      <ExampleCard
+        title="Loading spinner & skeleton loader"
+        description="Two common loading patterns, both animating continuously."
+        code={LoadingStatesSource}
+        fileName="LoadingStates.jsx"
+      >
+        <LoadingStates />
       </ExampleCard>
     </div>
   )
