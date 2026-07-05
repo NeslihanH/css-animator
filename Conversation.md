@@ -150,3 +150,24 @@ now and logged under M4 (visual design pass), since the user's original "UI'yi
 beğenmedim" feedback likely covers this too.
 
 Next: M1.4 - scroll progress bar.
+
+## 2026-07-05 - M1.4 and M1 wrap-up: copy + download buttons
+
+Built `ScrollProgressBar`: a self-contained scrollable box (own `overflow-y:
+auto` container + ref) with a bar pinned to its top, `scaleX` driven by
+`useScroll({ container: containerRef })`. Kept it scoped to its own container
+rather than the whole page, consistent with how the other three M1 examples
+are self-contained demo boxes rather than site-wide chrome. Approved without
+iteration.
+
+User asked for two more things on the code viewer (from M1.3): a copy-to-
+clipboard icon, then a download-as-file icon right after. Added both to
+`CodeBlock`: copy uses `navigator.clipboard.writeText` with a brief checkmark
+confirmation; download builds a `Blob` + temporary anchor click. Download
+needed a real file name, so threaded a `fileName` prop through
+`ExampleCard` -> `CodeBlock`, set per example to match its actual source file
+(`FadeSlideIn.jsx`, etc.) rather than a generic name.
+
+M1 - Scroll Animations is fully done: 4/4 examples, each with working code
+view + copy + download. Next: M2 - Page Transitions, starting with M2.1
+(route fade/slide transition via `AnimatePresence`).

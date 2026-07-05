@@ -56,3 +56,8 @@ real component (single source of truth, no drift as examples get tweaked);
 inline + highlighted keeps the reader on the page instead of bouncing to
 GitHub, which matters more for a showcase meant to impress. Applies
 retroactively to all M1 examples and to every example going forward.
+
+Follow-up: added copy-to-clipboard and download-as-file buttons on the same
+code panel (user request, same session). Download uses a `fileName` prop set
+to the example's real source file name, keeping the same "matches reality"
+principle as the `?raw` import itself.

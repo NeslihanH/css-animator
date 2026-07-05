@@ -1,0 +1,31 @@
+.progress-demo {
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+  transform-origin: left;
+  border-radius: 2px 2px 0 0;
+  z-index: 1;
+}
+
+.progress-scroll-area {
+  height: 220px;
+  overflow-y: auto;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--social-bg);
+}
+
+.progress-scroll-area p {
+  margin: 0 0 1.5rem;
+}
+
+.progress-scroll-area p:last-child {
+  margin-bottom: 0;
+}

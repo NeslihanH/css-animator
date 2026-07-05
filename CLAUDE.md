@@ -24,9 +24,10 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**M0 done. Live at `https://neslihanh.github.io/css-animator/`. M1.1-M1.3 done,
-plus a code viewer retrofit (every example has a "Show code" toggle). Current
-milestone: M1 - Scroll Animations, M1.4 next.**
+**M0 and M1 (Scroll Animations, 4/4 examples) done, live at
+`https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
+toggle with copy + download buttons. Current milestone: M2 - Page Transitions,
+starting with M2.1.**
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -59,14 +60,15 @@ Opens at `http://localhost:5173` by default.
 - [x] **M0 - Project Setup**
   - [x] M0.1 - Vite + React scaffold, Framer Motion + react-router-dom installed, base layout/nav
   - [x] M0.2 - Git remote + GitHub Pages deploy pipeline, empty shell verified live
-- [ ] **M1 - Scroll Animations** (4 examples)
+- [x] **M1 - Scroll Animations** (4 examples)
   - [x] M1.1 - Fade & slide-in on scroll (`whileInView`)
   - [x] M1.2 - Staggered list reveal on scroll
   - [x] M1.3 - Parallax scroll effect (`useScroll` + `useTransform`)
+  - [x] M1.4 - Scroll progress bar (scoped to its own scrollable container)
   - [x] Code viewer - "Show code" toggle on every `ExampleCard`, real source via
-        Vite `?raw` import + `prism-react-renderer` syntax highlighting.
-        Retrofitted into M1.1-M1.3, applies to all future examples too.
-  - [ ] M1.4 - Scroll progress bar
+        Vite `?raw` import + `prism-react-renderer` syntax highlighting, plus
+        copy-to-clipboard and download-as-file buttons. Applies to every
+        example in every milestone from here on.
 - [ ] **M2 - Page Transitions** (3 examples)
   - [ ] M2.1 - Route fade/slide transition (`AnimatePresence` + react-router)
   - [ ] M2.2 - Shared element transition (`layoutId`)

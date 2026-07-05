@@ -5,6 +5,8 @@ import StaggerReveal from '../examples/StaggerReveal.jsx'
 import StaggerRevealSource from '../examples/StaggerReveal.jsx?raw'
 import ParallaxScroll from '../examples/ParallaxScroll.jsx'
 import ParallaxScrollSource from '../examples/ParallaxScroll.jsx?raw'
+import ScrollProgressBar from '../examples/ScrollProgressBar.jsx'
+import ScrollProgressBarSource from '../examples/ScrollProgressBar.jsx?raw'
 
 function ScrollAnimations() {
   return (
@@ -17,6 +19,7 @@ function ScrollAnimations() {
         title="Fade & slide-in on scroll"
         description="Each box animates in independently the first time it enters the viewport. Scroll down to see all three."
         code={FadeSlideInSource}
+        fileName="FadeSlideIn.jsx"
       >
         <FadeSlideIn />
       </ExampleCard>
@@ -24,6 +27,7 @@ function ScrollAnimations() {
         title="Staggered list reveal"
         description="The whole group animates in together, but each item is delayed slightly after the previous one."
         code={StaggerRevealSource}
+        fileName="StaggerReveal.jsx"
       >
         <StaggerReveal />
       </ExampleCard>
@@ -31,8 +35,17 @@ function ScrollAnimations() {
         title="Parallax scroll"
         description="Background layers move at different speeds than the foreground as you scroll past."
         code={ParallaxScrollSource}
+        fileName="ParallaxScroll.jsx"
       >
         <ParallaxScroll />
+      </ExampleCard>
+      <ExampleCard
+        title="Scroll progress bar"
+        description="A bar fills up in sync with scroll position, tracked independently for this box."
+        code={ScrollProgressBarSource}
+        fileName="ScrollProgressBar.jsx"
+      >
+        <ScrollProgressBar />
       </ExampleCard>
     </div>
   )
