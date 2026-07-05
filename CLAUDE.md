@@ -25,8 +25,13 @@ decisions live here and in `Decisions.md`.
 ## Status
 
 **M0, M1, M2 done, live at `https://neslihanh.github.io/css-animator/`. Every
-example has a "Show code" toggle with copy + download buttons. M3.1 done.
-Current milestone: M3 - Micro-interactions, M3.2 next.**
+example has a "Show code" toggle with copy + download buttons. M3.1, M3.2
+done. Current milestone: M3 - Micro-interactions, M3.3 next.**
+
+Deploy note: `postbuild` script copies `dist/index.html` to `dist/404.html`
+so GitHub Pages serves the SPA shell (not a real 404) when a deep link like
+`/scroll-animations` is opened directly or refreshed - react-router then
+renders the right page client-side from the URL.
 
 Site-wide text centering: `.page { text-align: center; }` plus `margin: 0
 auto` on any block that also has a `max-width` (needed for `.page-subtitle`
@@ -81,7 +86,7 @@ Opens at `http://localhost:5173` by default.
 - [ ] **M3 - Micro-interactions** (4 examples)
   - [x] M3.1 - Button hover/tap feedback (`HoverButton`: scale on hover/tap,
         no position-follow - see D8)
-  - [ ] M3.2 - Animated toggle/switch
+  - [x] M3.2 - Animated toggle/switch
   - [ ] M3.3 - Form input focus/error animation
   - [ ] M3.4 - Animated loading spinner / skeleton loader
 - [ ] **M4 - Polish & Launch** (scope not locked, to be re-discussed before starting)

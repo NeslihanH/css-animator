@@ -1,0 +1,23 @@
+.toggle-track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  padding: 3px;
+  background: var(--border);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.toggle-track.is-on {
+  background: var(--accent);
+}
+
+.toggle-thumb {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}

@@ -1,6 +1,8 @@
 import ExampleCard from '../components/ExampleCard.jsx'
 import HoverButton from '../examples/HoverButton.jsx'
 import HoverButtonSource from '../examples/HoverButton.jsx?raw'
+import ToggleSwitch from '../examples/ToggleSwitch.jsx'
+import ToggleSwitchSource from '../examples/ToggleSwitch.jsx?raw'
 
 function MicroInteractions() {
   return (
@@ -16,6 +18,14 @@ function MicroInteractions() {
         fileName="HoverButton.jsx"
       >
         <HoverButton />
+      </ExampleCard>
+      <ExampleCard
+        title="Animated toggle/switch"
+        description="Click to switch on/off: the thumb slides with a spring and the track color transitions."
+        code={ToggleSwitchSource}
+        fileName="ToggleSwitch.jsx"
+      >
+        <ToggleSwitch />
       </ExampleCard>
     </div>
   )
