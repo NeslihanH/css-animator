@@ -315,3 +315,16 @@ blur (must contain `@` and be longer than 3 chars) that triggers a
 `AnimatePresence`-driven error message. Approved without iteration.
 
 Next: M3.4 - animated loading spinner / skeleton loader.
+
+## 2026-07-06 - M3.4, M3 and the full example list complete
+
+Built `LoadingStates`: a continuously-rotating CSS spinner (border-top trick,
+`animate={{ rotate: 360 }}`, `repeat: Infinity`, linear ease) next to a
+3-line skeleton group pulsing opacity with a slight per-line delay. Both
+self-running, no interaction needed. Approved without iteration.
+
+M3 - Micro-interactions is done (4/4). All originally-planned 11 examples
+across M1-M3 are now live and working, each with code view + copy + download.
+M4 (Polish & Launch) is the only milestone left, and its scope was
+deliberately never locked in - time to go discuss it with the user now that
+M1-M3 are behind us, as agreed back at kickoff.

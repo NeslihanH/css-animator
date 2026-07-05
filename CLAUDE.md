@@ -24,9 +24,10 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**M0, M1, M2 done, live at `https://neslihanh.github.io/css-animator/`. Every
-example has a "Show code" toggle with copy + download buttons. M3.1-M3.3
-done. Current milestone: M3 - Micro-interactions, M3.4 next.**
+**M0, M1, M2, M3 all done - 11/11 examples, live at
+`https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
+toggle with copy + download buttons. M4 (Polish & Launch) scope is next to
+discuss - was deliberately left open, see Conversation.md.**
 
 Deploy note: `postbuild` script copies `dist/index.html` to `dist/404.html`
 so GitHub Pages serves the SPA shell (not a real 404) when a deep link like
@@ -83,12 +84,12 @@ Opens at `http://localhost:5173` by default.
         applied site-wide to real navigation, not a contained demo box
   - [x] M2.2 - Shared element transition (`layoutId`)
   - [x] M2.3 - Modal/overlay open-close transition
-- [ ] **M3 - Micro-interactions** (4 examples)
+- [x] **M3 - Micro-interactions** (4 examples)
   - [x] M3.1 - Button hover/tap feedback (`HoverButton`: scale on hover/tap,
         no position-follow - see D8)
   - [x] M3.2 - Animated toggle/switch
   - [x] M3.3 - Form input focus/error animation
-  - [ ] M3.4 - Animated loading spinner / skeleton loader
+  - [x] M3.4 - Animated loading spinner / skeleton loader
 - [ ] **M4 - Polish & Launch** (scope not locked, to be re-discussed before starting)
   - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet -
         still an open candidate for this milestone; the text-centering part of
