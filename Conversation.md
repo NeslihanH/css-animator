@@ -247,6 +247,33 @@ site-wide (not just for the two examples that exposed it). Next: M3 -
 Micro-interactions, starting with M3.1 (button hover/tap feedback, magnetic
 button).
 
+## 2026-07-05 - M3.1: magnetic button dropped for plain hover, then a
+centering pass
+
+Built `MagneticButton` first (cursor-follow via `onMouseMove` + spring
+`animate`), matching the milestone's own parenthetical. User felt it
+"vibrated" - traced to `mass: 0.1` giving it almost zero inertia, so it
+mirrored the mouse's raw micro-jitter instead of smoothing it. Increased mass
+to 1 and the pull strength slightly, but once it was clearer, the user said
+plainly they didn't want the button following the cursor at all - just a
+normal hover/tap response. Replaced it outright with `HoverButton` (scale on
+`whileHover`/`whileTap`, no position change). See [[D8]].
+
+That triggered a broader complaint: several page texts were still visibly
+left-aligned despite `#root { text-align: center }` supposedly cascading
+everywhere. Root-caused two distinct issues (see [[D9]]): `.page-subtitle`
+had `max-width` without `margin: 0 auto` (text-align only centers text
+*inside* a box, it doesn't center the box itself); and `.example-header` was
+a `space-between` flex row that positioned the whole text block at the
+left regardless of text-align. Fixed both - added explicit `.page {
+text-align: center }`, gave `.page-subtitle` `margin: 0 auto`, and turned
+`.example-header` into a centered column (title, description, "Show code"
+button stacked). That last change left the button touching the demo box
+below it with no gap - added `margin-bottom` back onto `.example-header` to
+fix it. All approved.
+
+Next: M3.2 - animated toggle/switch.
+
 ## 2026-07-05 - M2.3: modal open/close, M2 wrap-up
 
 Built `ModalDemo`: a button opens a spring-based (`type: 'spring', stiffness:

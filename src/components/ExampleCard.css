@@ -13,10 +13,10 @@
 
 .example-header {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   gap: 1rem;
-  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
 }
 
 .example-card h2 {
@@ -26,7 +26,7 @@
 }
 
 .example-description {
-  margin: 0 0 1.5rem;
+  margin: 0;
   max-width: 560px;
 }
 

@@ -6,10 +6,14 @@ main {
   box-sizing: border-box;
 }
 
+.page {
+  text-align: center;
+}
+
 .page-subtitle {
   color: var(--text);
   max-width: 640px;
-  margin-top: 0.5rem;
+  margin: 0.5rem auto 0;
 }
 
 .category-grid {
