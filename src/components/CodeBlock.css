@@ -1,3 +1,7 @@
+.code-block-wrapper {
+  position: relative;
+}
+
 .code-block {
   margin: 0;
   padding: 1.25rem;
@@ -6,4 +10,30 @@
   font-size: 0.85rem;
   line-height: 1.5;
   text-align: left;
+}
+
+.code-block-actions {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  display: flex;
+  gap: 0.4rem;
+  z-index: 1;
+}
+
+.code-action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: #d6deeb;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.code-action-button:hover {
+  background: rgba(255, 255, 255, 0.16);
 }
