@@ -1,5 +1,8 @@
 .code-block-wrapper {
   position: relative;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .code-block {
@@ -10,6 +13,9 @@
   font-size: 0.85rem;
   line-height: 1.5;
   text-align: left;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
 }
 
 .code-block-actions {
