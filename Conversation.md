@@ -171,3 +171,19 @@ needed a real file name, so threaded a `fileName` prop through
 M1 - Scroll Animations is fully done: 4/4 examples, each with working code
 view + copy + download. Next: M2 - Page Transitions, starting with M2.1
 (route fade/slide transition via `AnimatePresence`).
+
+## 2026-07-05 - M2.1: real site-wide page transitions
+
+Design call (technical, made without a vote per the playbook): rather than
+faking route transitions inside a contained demo box like M1's examples, wired
+`AnimatePresence` + `useLocation` directly into `App.jsx` so the actual site
+navigation animates - every click on a nav link fades/slides between real
+pages. Added a small reusable `PageTransition` wrapper component. The Page
+Transitions page itself just explains this and points back at the nav, plus
+shows `PageTransition.jsx`'s source. Approved without iteration.
+
+M2.2 and M2.3 will go back to M1's pattern (self-contained demo boxes) since
+shared-element and modal techniques don't need real routing to demonstrate
+convincingly.
+
+Next: M2.2 - shared element transition (`layoutId`).
