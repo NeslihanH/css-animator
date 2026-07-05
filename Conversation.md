@@ -293,6 +293,21 @@ and react-router reads the real URL and renders the correct page. No
 
 Next: M3.3 - form input focus/error animation.
 
+## 2026-07-06 - GitHub Pages intermittent deploy failures (infra, not our code)
+
+The M3.2 deploy failed with the same generic "Deployment failed, try again
+later" error from `actions/deploy-pages`. User suspected our Node version;
+researched it instead of guessing - this is a documented, ongoing GitHub-side
+intermittent issue (`actions/deploy-pages` issues #406, #418; community
+discussions #200823, #200884), reported from January through July 2026,
+unrelated to any repo-side Node config. The Node 20 deprecation warning in the
+same log is a separate, unrelated line (about the action's own runner
+runtime, not our build). Fix each time so far: re-run the failed job: it
+tends to self-recover. No code change needed; noting this here so a future
+"deploy failed" isn't mistaken for a real regression.
+
+Next: M3.3 - form input focus/error animation.
+
 ## 2026-07-05 - M2.3: modal open/close, M2 wrap-up
 
 Built `ModalDemo`: a button opens a spring-based (`type: 'spring', stiffness:
