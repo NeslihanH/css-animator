@@ -3,6 +3,8 @@ import HoverButton from '../examples/HoverButton.jsx'
 import HoverButtonSource from '../examples/HoverButton.jsx?raw'
 import ToggleSwitch from '../examples/ToggleSwitch.jsx'
 import ToggleSwitchSource from '../examples/ToggleSwitch.jsx?raw'
+import FormFeedback from '../examples/FormFeedback.jsx'
+import FormFeedbackSource from '../examples/FormFeedback.jsx?raw'
 
 function MicroInteractions() {
   return (
@@ -26,6 +28,14 @@ function MicroInteractions() {
         fileName="ToggleSwitch.jsx"
       >
         <ToggleSwitch />
+      </ExampleCard>
+      <ExampleCard
+        title="Form input focus/error feedback"
+        description="Focus the field to see the highlight ring. Type something without an @ and click away to see the shake + error message."
+        code={FormFeedbackSource}
+        fileName="FormFeedback.jsx"
+      >
+        <FormFeedback />
       </ExampleCard>
     </div>
   )
