@@ -306,16 +306,12 @@ runtime, not our build). Fix each time so far: re-run the failed job: it
 tends to self-recover. No code change needed; noting this here so a future
 "deploy failed" isn't mistaken for a real regression.
 
-Next: M3.3 - form input focus/error animation.
+## 2026-07-06 - M3.3: form input focus/error feedback
 
-## 2026-07-05 - M2.3: modal open/close, M2 wrap-up
+Built `FormFeedback`: an email input with a CSS focus ring/glow
+(`:focus { border-color; box-shadow }`), and a simple validation check on
+blur (must contain `@` and be longer than 3 chars) that triggers a
+`motion.input` shake (`animate={{ x: [0, -8, 8, -6, 6, 0] }}`) plus an
+`AnimatePresence`-driven error message. Approved without iteration.
 
-Built `ModalDemo`: a button opens a spring-based (`type: 'spring', stiffness:
-300, damping: 25`) pop-in dialog over a fading backdrop, both via
-`AnimatePresence`. Deliberately different motion feel from M2.2's shared
-layoutId morph, so the two examples don't read as the same trick twice.
-Approved without iteration.
-
-M2 - Page Transitions is fully done: 3/3 (site-wide route transition, shared
-element morph, modal). Next: M3 - Micro-interactions, starting with M3.1
-(button hover/tap feedback, magnetic button).
+Next: M3.4 - animated loading spinner / skeleton loader.
