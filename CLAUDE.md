@@ -24,20 +24,26 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**M0, M1, M2, M3 all done - 11/11 examples, live at
+**M0-M3 all done - 11/11 examples, live at
 `https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
-toggle with copy + download buttons. M4 (Polish & Launch) scope is next to
-discuss - was deliberately left open, see Conversation.md.**
+toggle with copy + download buttons. M4.1 (visual design) done: "Studio
+Grain" direction (near-black/warm-paper, Georgia serif headings, single
+amber accent, thin hairlines, soft shadows), both themes. Current milestone:
+M4 - Polish & Launch, M4.2 (responsive check) next.**
 
 Deploy note: `postbuild` script copies `dist/index.html` to `dist/404.html`
 so GitHub Pages serves the SPA shell (not a real 404) when a deep link like
 `/scroll-animations` is opened directly or refreshed - react-router then
 renders the right page client-side from the URL.
 
-Site-wide text centering: `.page { text-align: center; }` plus `margin: 0
-auto` on any block that also has a `max-width` (needed for `.page-subtitle`
-and would apply to any future centered paragraph) - a `max-width` alone does
-not center a block, it just narrows it and leaves it stuck to the left.
+Visual identity (M4.1, "Studio Grain" - see D11): near-black `#0d0d0f` dark /
+warm paper `#f5f3ee` light, Georgia serif for `h1`/`h2`/card titles, system
+sans for body/UI, one amber accent (`#ffb238` dark / `#b8720a` light) used
+sparingly (nav active underline, focus rings, hover fills) rather than
+filling boxes. Thin 1px hairline borders, soft shadows (`var(--shadow)`), no
+thick "sticker" borders. Content is left-aligned (no more site-wide
+text-align: center - that was the previous "Playground" direction's choice,
+superseded). Token file: `src/index.css`.
 
 Note: the original plan had an M0.3 ("finalize triple docs"). Folded into the
 per-step doc update instead of its own milestone - CLAUDE.md gets its repo
@@ -90,13 +96,11 @@ Opens at `http://localhost:5173` by default.
   - [x] M3.2 - Animated toggle/switch
   - [x] M3.3 - Form input focus/error animation
   - [x] M3.4 - Animated loading spinner / skeleton loader
-- [ ] **M4 - Polish & Launch** (scope not locked, to be re-discussed before starting)
-  - [ ] Visual design pass (user flagged the M0.1 shell UI as not liked yet -
-        still an open candidate for this milestone; the text-centering part of
-        it was resolved ahead of time during M3.1, see D9)
-  - [ ] Responsive check
-  - [ ] `prefers-reduced-motion` support
-  - [ ] README + final deploy + publishing check
+- [ ] **M4 - Polish & Launch**
+  - [x] M4.1 - Visual design pass ("Studio Grain" direction, both themes; see D11)
+  - [ ] M4.2 - Responsive check
+  - [ ] M4.3 - `prefers-reduced-motion` support
+  - [ ] M4.4 - README + final deploy + publishing check
 
 Note: the example list is a living roadmap, not a hard ceiling - new animation
 ideas get slotted into M1/M2/M3 (or a new M5+) explicitly as they come up, never

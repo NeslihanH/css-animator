@@ -7,21 +7,22 @@
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 1rem;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 2.5rem;
   background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
 .nav-brand {
   font-weight: 700;
-  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  font-size: 1.05rem;
   color: var(--text-h);
 }
 
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 1.75rem;
   margin: 0;
   padding: 0;
 }
@@ -29,9 +30,9 @@
 .nav-links a {
   color: var(--text);
   text-decoration: none;
-  font-size: 0.95rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 2px solid transparent;
+  font-size: 0.85rem;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
 }
 
 .nav-links a:hover {
@@ -39,6 +40,6 @@
 }
 
 .nav-links a.active {
-  color: var(--accent);
+  color: var(--text-h);
   border-bottom-color: var(--accent);
 }

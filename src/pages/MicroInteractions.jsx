@@ -11,7 +11,8 @@ import LoadingStatesSource from '../examples/LoadingStates.jsx?raw'
 function MicroInteractions() {
   return (
     <div className="page">
-      <h1>Micro-interactions</h1>
+      <span className="page-eyebrow">Micro-interactions</span>
+      <h1>Details you feel<br />more than see.</h1>
       <p className="page-subtitle">
         Small feedback animations that make an interface feel responsive.
       </p>

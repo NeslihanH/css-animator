@@ -14,9 +14,9 @@
   text-align: center;
   font-weight: 600;
   color: var(--text-h);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
   box-shadow: var(--shadow);
   cursor: pointer;
 }
@@ -28,7 +28,7 @@
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.45);
-  border-radius: 12px;
+  border-radius: 3px;
   padding: 1.5rem;
 }
 
@@ -38,8 +38,8 @@
   text-align: center;
   color: var(--text-h);
   background: var(--bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 12px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
   box-shadow: var(--shadow);
 }
 
@@ -53,11 +53,17 @@
 }
 
 .shared-element-detail button {
-  padding: 0.5rem 1.25rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 8px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
   cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.shared-element-detail button:hover {
+  color: var(--text-h);
+  border-color: var(--text);
 }

@@ -1,16 +1,16 @@
 .hover-button {
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  padding: 0.85rem 2.25rem;
+  font-size: 0.95rem;
   color: var(--text-h);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  border-radius: 2px;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .hover-button:hover {
-  background: var(--accent-border);
+  background: var(--accent);
+  color: var(--bg);
   box-shadow: var(--shadow);
 }
