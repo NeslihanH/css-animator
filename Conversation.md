@@ -472,3 +472,34 @@ None of this was scope creep to push back on - all four were real gaps or
 bugs a user would actually hit, just found after the "done" milestone review
 rather than during it. Worth remembering: "milestone complete" doesn't mean
 "stop taking feedback seriously."
+
+## 2026-07-07/08 - Nav additions, then M5 "Pure CSS" (see [[D17]])
+
+User pointed at a sibling project (Suno Cookbook) and asked to port over two
+things it already had: a visible GitHub repo link and a manual dark/light
+toggle. Both landed in `Nav` - the toggle needed `index.css` restructured to
+add `[data-theme]` override blocks alongside the existing media query (the
+site had no manual override mechanism before this).
+
+Then asked me to "be proactive" - offered three real gaps (missing meta/OG
+tags, no pure-CSS examples despite the site's name, no way back to the
+user's other work) and one explicit non-suggestion (tests/analytics, flagged
+as not worth it at this scale). User picked pure-CSS examples, then
+immediately followed up asking for something bigger and more impressive (5-6
+examples, not the 2 first proposed) - built five: a 3D flip card, a native
+`animation-timeline: view()` scroll reveal, a marquee, a spinning
+`conic-gradient` border, and animated gradient text. Gave them their own
+page and nav entry (M5) rather than folding them into existing categories.
+
+Two real bugs surfaced in testing, both fixed:
+1. `GradientText`'s serif letterforms were visually clipped at the top - a
+   `background-clip: text` line-height/padding issue, fixed with
+   `line-height: 1.4` and a touch of vertical padding.
+2. `ScrollDrivenReveal`'s box would appear then vanish again once scrolled
+   past - the `animation-timeline: view()` animation had no
+   `animation-fill-mode`, so once its active range ended, the browser
+   reverted the element to its un-animated base state (`opacity: 0`). Fixed
+   with `animation: scroll-driven-reveal linear both`.
+
+Total example count is now 16 (11 original + 5 pure-CSS). Bumping to
+v1.1.0.

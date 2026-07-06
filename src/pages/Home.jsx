@@ -16,6 +16,11 @@ const categories = [
     title: 'Micro-interactions',
     description: 'Buttons, toggles, form feedback, loading states.',
   },
+  {
+    to: '/pure-css',
+    title: 'Pure CSS',
+    description: 'No JavaScript: 3D flips, scroll-driven reveals, gradients, marquees.',
+  },
 ]
 
 function Home() {

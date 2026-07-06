@@ -6,6 +6,7 @@ import Home from './pages/Home.jsx'
 import ScrollAnimations from './pages/ScrollAnimations.jsx'
 import PageTransitions from './pages/PageTransitions.jsx'
 import MicroInteractions from './pages/MicroInteractions.jsx'
+import PureCss from './pages/PureCss.jsx'
 import './App.css'
 
 function App() {
@@ -29,6 +30,10 @@ function App() {
             <Route
               path="/micro-interactions"
               element={<PageTransition><MicroInteractions /></PageTransition>}
+            />
+            <Route
+              path="/pure-css"
+              element={<PageTransition><PureCss /></PageTransition>}
             />
           </Routes>
         </AnimatePresence>

@@ -1,0 +1,29 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-border {
+  width: min(280px, 100%);
+  margin: 0 auto;
+  padding: 3px;
+  border-radius: 12px;
+  background: conic-gradient(from var(--angle), var(--accent), transparent 40%, var(--accent));
+  animation: gradient-border-spin 3s linear infinite;
+}
+
+.gradient-border-inner {
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  color: var(--text-h);
+  background: var(--bg);
+  border-radius: 10px;
+}
+
+@keyframes gradient-border-spin {
+  to {
+    --angle: 360deg;
+  }
+}

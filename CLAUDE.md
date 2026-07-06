@@ -24,12 +24,21 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**v1.0.0 - all of M0-M4 done, live at
-`https://neslihanh.github.io/css-animator/`. 11/11 examples, each with a
-"Show code" toggle with copy + download buttons. The originally-planned
-milestone list is complete; future work is whatever new examples or
-requests come up next (living roadmap, see the note at the bottom of this
-file).**
+**v1.1.0 - M0-M4 (the original plan) done, plus a new M5 "Pure CSS" category
+(5 examples, zero JS animation) added afterward as living-roadmap scope. Live
+at `https://neslihanh.github.io/css-animator/`. 16/16 examples total, each
+with a "Show code" toggle with per-file tabs, copy, and download.**
+
+Theme toggle (post-v1.0.0): manual dark/light override via `useTheme`
+(`src/hooks/useTheme.js`) - stamps `data-theme="dark"`/`"light"` on
+`<html>`, persisted to `localStorage`. `index.css` defines light tokens on
+`:root`, dark tokens under `@media (prefers-color-scheme: dark)` AND under
+`:root[data-theme="dark"]`/`:root[data-theme="light"]` (the attribute
+selector always wins over the plain `:root` in the media query, by
+specificity, regardless of source order) - the OS preference is just the
+*initial* value if the user has never toggled manually. Any new color token
+must be added to all three places (`:root`, the media query, and both
+`[data-theme]` blocks) or the manual toggle silently stops working for it.
 
 Reduced motion (M4.3): `<MotionConfig reducedMotion="user">` wraps the app in
 `main.jsx`, covering every Framer Motion `animate`/`whileHover`/`whileTap`
@@ -80,11 +89,12 @@ Post-v1.0.0 improvements (see D15, D16):
 
 ```
 src/
-  components/   # Shared UI (Nav, later: shared example wrappers)
-  pages/        # One page per category (Home, ScrollAnimations, PageTransitions, MicroInteractions)
-  examples/     # Individual animation example components, added in M1-M3
+  components/   # Shared UI (Nav, ExampleCard, CodeBlock, PageTransition)
+  pages/        # One page per category, incl. PureCss.jsx (M5)
+  examples/     # Individual animation example components
+  hooks/        # useTheme.js (manual dark/light toggle)
   App.jsx       # Route definitions
-  main.jsx      # React root, router provider
+  main.jsx      # React root, MotionConfig + router provider
 public/         # Static assets served as-is
 ```
 
@@ -134,6 +144,19 @@ Opens at `http://localhost:5173` by default.
         checklist run (no Turkish characters, no em-dashes, no secrets - see
         D14)
 
+- [x] **M5 - Pure CSS** (5 examples, no animation library, no JS animation
+      logic - added post-v1.0.0 as living-roadmap scope, not part of the
+      original plan; see D17)
+  - [x] M5.1 - 3D flip card (`perspective` + `rotateY`)
+  - [x] M5.2 - Native scroll-driven reveal (`animation-timeline: view()`,
+        Chrome/Edge only for now, `@supports`-gated)
+  - [x] M5.3 - Marquee ticker (`@keyframes` + duplicated track)
+  - [x] M5.4 - Spinning gradient border (`@property --angle` + `conic-gradient`)
+  - [x] M5.5 - Animated gradient text (`background-clip: text`)
+
+Also added post-v1.0.0, not tied to a specific milestone: a GitHub link and
+the manual theme toggle in `Nav`.
+
 Note: the example list is a living roadmap, not a hard ceiling - new animation
-ideas get slotted into M1/M2/M3 (or a new M5+) explicitly as they come up, never
+ideas get slotted into M1-M5 (or a new M6+) explicitly as they come up, never
 silently absorbed.

@@ -44,6 +44,32 @@
   }
 }
 
+:root[data-theme='dark'] {
+  --text: #86837c;
+  --text-h: #f2f0ea;
+  --bg: #0d0d0f;
+  --border: #55555c;
+  --social-bg: #29292e;
+  --accent: #ffb238;
+  --accent-bg: rgba(255, 178, 56, 0.15);
+  --accent-border: #ffb238;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --grain: rgba(255, 255, 255, 0.05);
+}
+
+:root[data-theme='light'] {
+  --text: #6f6a5c;
+  --text-h: #17140f;
+  --bg: #f5f3ee;
+  --border: #ddd7c9;
+  --social-bg: #ece8dd;
+  --accent: #b8720a;
+  --accent-bg: rgba(184, 114, 10, 0.1);
+  --accent-border: #b8720a;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --grain: rgba(0, 0, 0, 0.035);
+}
+
 html {
   scrollbar-gutter: stable;
 }

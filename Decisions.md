@@ -280,3 +280,32 @@ be much bigger than they feel like they should be, especially near the dark
 end of the scale. Lesson for future dark-mode work here: verify new
 dark-mode colors by checking the actual rendered contrast, not just that the
 hex values differ.
+
+## D17 - Manual theme toggle, plus M5 "Pure CSS" as new living-roadmap scope
+
+Context: after v1.0.0, user asked for two things pulled from a sibling
+project's pattern (Suno Cookbook): a visible GitHub link, and a manual
+dark/light toggle rather than relying solely on `prefers-color-scheme`.
+Separately, user asked to be "proactive" about suggestions; among a few
+options (meta/OG tags, a footer/contact link, pure-CSS examples), user chose
+pure-CSS examples, then explicitly asked for a bigger, more impressive set
+(5-6) rather than the original 2 proposed.
+Decision:
+- Theme toggle: `useTheme` hook (`localStorage`-persisted, `data-theme`
+  attribute on `<html>`), with `:root[data-theme="dark"]` /
+  `:root[data-theme="light"]` blocks added to `index.css` alongside the
+  existing `@media (prefers-color-scheme: dark)` block - the attribute
+  selector's higher specificity lets a manual choice override the OS
+  preference in either direction, per the standard robust pattern for this.
+- GitHub link: small octocat-mark SVG in `Nav`, always visible (desktop and
+  mobile), linking to the repo.
+- M5 "Pure CSS": five examples with zero animation-library/JS-animation code
+  (`FlipCard`, `ScrollDrivenReveal`, `Marquee`, `GradientBorder`,
+  `GradientText`), given their own page and nav entry rather than scattered
+  into M1-M3, since collecting them together makes the "no JavaScript" claim
+  legible at a glance instead of buried in random cards.
+Rationale: the theme toggle and GitHub link directly reuse a pattern the
+user already validated on another project, cheap to port over. M5 closes a
+real gap the user (accurately) identified: despite the site's name, nothing
+before this used pure CSS animation technique - every existing example was
+Framer Motion driven.

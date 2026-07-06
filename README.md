@@ -25,6 +25,13 @@ with its real source code, one click away, with copy and download buttons.
 - Form input focus/error feedback
 - Loading spinner & skeleton loader
 
+**Pure CSS** (no JavaScript animation logic at all)
+- 3D flip card
+- Native scroll-driven reveal (`animation-timeline: view()`)
+- Marquee ticker
+- Spinning gradient border (`@property` + `conic-gradient`)
+- Animated gradient text
+
 ## Stack
 
 - React + Vite
