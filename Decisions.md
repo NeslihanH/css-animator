@@ -239,3 +239,44 @@ Decision: bumped `package.json` version to `1.0.0` and rewrote `README.md`
 as the first complete version.
 Rationale: closes out the milestone plan that was set at kickoff - every
 originally-planned example (11/11) and every M4 polish item is done.
+
+## D15 - Code viewer shows every file, not just the `.jsx`
+
+Context: post-v1.0.0, user pointed out that "Show code" only ever showed the
+React component source, never the paired `.css` file - incomplete for a site
+whose whole subject is CSS animation technique; someone reading the code
+can't actually see the styling that makes an example look the way it does.
+Decision: `ExampleCard` and `CodeBlock` switched from a single `code`/
+`fileName` prop pair to a `files` array (`[{ fileName, code }, ...]`).
+`CodeBlock` renders a file-name tab per entry (styled to look like an
+attached tab sitting on top of the code panel) when there's more than one,
+and copy/download act on whichever tab is active. Pages now import both the
+`.jsx?raw` and `.css?raw` source for every example that has a CSS file (a
+few, like `PageTransition`, don't and just get a single-file `files` array,
+no tabs shown).
+Rationale: matches the site's actual claim ("see the real source") -
+previously only half true. Any future example with more than one source
+file (e.g. a shared helper) should list all of them in `files`, in the order
+a reader would want to see them.
+
+## D16 - Dark-mode surface contrast needed a second, more aggressive pass
+
+Context: first attempt at fixing "boxes are invisible on black" (bumping
+`--border` from `#2a2a2c` to `#3d3d42` and giving demo boxes `--social-bg`
+instead of `--bg`) was too timid - user reported it "didn't look very
+different." The values were still too close in luminance to read as
+distinct at a glance, and the dark-mode `--shadow` (a black
+`rgba(0,0,0,0.5)` drop shadow) is fundamentally invisible against a
+near-black `--bg` - shadows only read when they're darker than their
+surroundings, which isn't possible once the background is already near-black.
+Decision: pushed the values much further - `--border: #55555c`,
+`--social-bg: #29292e` - and added a subtle light rim to the dark-mode
+`--shadow` (`0 0 0 1px rgba(255, 255, 255, 0.05)` alongside the drop shadow)
+so elevated surfaces get a highlight edge instead of relying solely on a
+shadow that can't work in the dark.
+Rationale: small, "tasteful" contrast bumps are easy to convince yourself
+are enough when looking at hex values in isolation, but perceptually need to
+be much bigger than they feel like they should be, especially near the dark
+end of the scale. Lesson for future dark-mode work here: verify new
+dark-mode colors by checking the actual rendered contrast, not just that the
+hex values differ.

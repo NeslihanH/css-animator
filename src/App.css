@@ -59,8 +59,20 @@ main {
   font-size: 0.95rem;
 }
 
-.transition-hint {
-  margin: 0;
+.transition-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.transition-links a {
+  color: var(--text-h);
+  text-decoration: none;
   font-weight: 600;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--accent);
+}
+
+.transition-links a:hover {
   color: var(--accent);
 }

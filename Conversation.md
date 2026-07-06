@@ -441,3 +441,34 @@ This closes the milestone plan set at kickoff: M0-M4 all done, 11/11
 examples, each with working code view + copy + download, responsive, reduced-
 motion aware, and visually settled on "Studio Grain" after the Playground
 detour. Whatever comes next is new scope, not a gap in the original plan.
+
+## 2026-07-07 - Post-v1.0.0: real feedback keeps coming, and it's good feedback
+
+Three more rounds right after calling it "done," all legitimate:
+
+1. User asked to rename "CSS Animator" to "React CSS Animator." Pushed back
+   with reasoning rather than just agreeing - the site's value is the
+   animation *techniques* (framework-agnostic), and "React CSS" isn't even
+   fully accurate (Framer Motion is the actual animation engine). Asked what
+   problem they were trying to solve before making the change; no rename
+   happened.
+2. User pointed out (after a typo - "kink" for "link") that the Route
+   Transition example's "click a nav link above" hint text wasn't itself a
+   link - just static text pointing elsewhere. Replaced it with three real
+   `<Link>`s right in the card (Home / Scroll Animations / Micro-interactions)
+   so the transition can be triggered without scrolling to the real nav.
+3. User pointed out the code viewer only ever showed the `.jsx` file, never
+   the paired `.css` - a real gap for a site about CSS technique. Added file
+   tabs to `CodeBlock` (see [[D15]]) so every example with a CSS file shows
+   both, and rebuilt every page's example list to pass a `files` array
+   instead of a single `code`/`fileName` pair.
+4. Separately, user flagged that dark-mode demo boxes were nearly invisible
+   ("black on black boxes... some people might not be able to see this").
+   First fix attempt was too conservative and visibly failed to solve it;
+   see [[D16]] for the much larger second pass and the lesson banked about
+   verifying dark-mode contrast for real rather than eyeballing hex values.
+
+None of this was scope creep to push back on - all four were real gaps or
+bugs a user would actually hit, just found after the "done" milestone review
+rather than during it. Worth remembering: "milestone complete" doesn't mean
+"stop taking feedback seriously."
