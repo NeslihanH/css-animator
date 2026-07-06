@@ -2,7 +2,7 @@ import { useState } from 'react'
 import CodeBlock from './CodeBlock.jsx'
 import './ExampleCard.css'
 
-function ExampleCard({ title, description, code, fileName, children }) {
+function ExampleCard({ title, description, files, children }) {
   const [showCode, setShowCode] = useState(false)
 
   return (
@@ -12,7 +12,7 @@ function ExampleCard({ title, description, code, fileName, children }) {
           <h2>{title}</h2>
           {description && <p className="example-description">{description}</p>}
         </div>
-        {code && (
+        {files && (
           <button
             type="button"
             className="example-code-toggle"
@@ -22,7 +22,7 @@ function ExampleCard({ title, description, code, fileName, children }) {
           </button>
         )}
       </div>
-      {code && showCode && <CodeBlock code={code} fileName={fileName} />}
+      {files && showCode && <CodeBlock files={files} />}
       <div className="example-demo">{children}</div>
     </section>
   )

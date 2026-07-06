@@ -62,6 +62,20 @@ per-step doc update instead of its own milestone - CLAUDE.md gets its repo
 layout / run instructions updated as part of closing out M0.1, not as a
 separate step.
 
+Post-v1.0.0 improvements (see D15, D16):
+- Code viewer shows every file behind an example, not just the `.jsx`: pages
+  pass `files={[{ fileName, code }, ...]}` to `ExampleCard` (not the old
+  single `code`/`fileName` props), `CodeBlock` renders a file tab per entry
+  when there's more than one. Any example with a paired `.css` file must
+  import both `?raw` sources and list both in `files`.
+- Dark-mode surfaces needed a second, stronger contrast pass: `--social-bg`
+  and `--border` were too close to `--bg` to read as distinct boxes, and a
+  black `box-shadow` is invisible on a near-black background. Current dark
+  values: `--border: #55555c`, `--social-bg: #29292e`, `--shadow` includes a
+  subtle light rim (`0 0 0 1px rgba(255,255,255,0.05)`) alongside the drop
+  shadow. Any new dark-mode-only color should be checked for this same
+  "too-close-to-bg" trap before shipping.
+
 ## Repo layout
 
 ```

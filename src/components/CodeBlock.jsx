@@ -29,9 +29,22 @@ function DownloadIcon() {
   )
 }
 
-function CodeBlock({ code, language = 'jsx', fileName = 'example.jsx' }) {
+function languageFor(fileName) {
+  const extension = fileName.split('.').pop()
+  return extension === 'css' ? 'css' : 'jsx'
+}
+
+function CodeBlock({ files }) {
+  const [activeIndex, setActiveIndex] = useState(0)
   const [copied, setCopied] = useState(false)
-  const trimmedCode = code.trim()
+
+  const activeFile = files[activeIndex]
+  const trimmedCode = activeFile.code.trim()
+
+  const handleTabClick = (index) => {
+    setActiveIndex(index)
+    setCopied(false)
+  }
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(trimmedCode)
@@ -44,44 +57,60 @@ function CodeBlock({ code, language = 'jsx', fileName = 'example.jsx' }) {
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = fileName
+    link.download = activeFile.fileName
     link.click()
     URL.revokeObjectURL(url)
   }
 
   return (
     <div className="code-block-wrapper">
-      <div className="code-block-actions">
-        <button
-          type="button"
-          className="code-action-button"
-          onClick={handleDownload}
-          aria-label="Download code"
-        >
-          <DownloadIcon />
-        </button>
-        <button
-          type="button"
-          className="code-action-button"
-          onClick={handleCopy}
-          aria-label="Copy code"
-        >
-          {copied ? <CheckIcon /> : <CopyIcon />}
-        </button>
+      {files.length > 1 && (
+        <div className="code-block-tabs">
+          {files.map((file, index) => (
+            <button
+              key={file.fileName}
+              type="button"
+              className={`code-block-tab ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => handleTabClick(index)}
+            >
+              {file.fileName}
+            </button>
+          ))}
+        </div>
+      )}
+      <div className="code-block-body">
+        <div className="code-block-actions">
+          <button
+            type="button"
+            className="code-action-button"
+            onClick={handleDownload}
+            aria-label="Download code"
+          >
+            <DownloadIcon />
+          </button>
+          <button
+            type="button"
+            className="code-action-button"
+            onClick={handleCopy}
+            aria-label="Copy code"
+          >
+            {copied ? <CheckIcon /> : <CopyIcon />}
+          </button>
+        </div>
+        <Highlight theme={themes.nightOwl} code={trimmedCode} language={languageFor(activeFile.fileName)}>
+          {({ className, style, tokens, getLineProps, getTokenProps }) => (
+            <pre className={`code-block ${className}`} style={style}>
+              {tokens.map((line, lineIndex) => (
+                <div key={lineIndex} {...getLineProps({ line })}>
+                  {line.map((token, tokenIndex) => (
+                    <span key={tokenIndex} {...getTokenProps({ token })} />
+                  ))}
+                </div>
+              ))}
+            </pre>
+          )}
+        </Highlight>
       </div>
-      <Highlight theme={themes.nightOwl} code={trimmedCode} language={language}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={`code-block ${className}`} style={style}>
-            {tokens.map((line, lineIndex) => (
-              <div key={lineIndex} {...getLineProps({ line })}>
-                {line.map((token, tokenIndex) => (
-                  <span key={tokenIndex} {...getTokenProps({ token })} />
-                ))}
-              </div>
-            ))}
-          </pre>
-        )}
-      </Highlight>
     </div>
   )
 }
