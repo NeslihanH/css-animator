@@ -1,16 +1,25 @@
 import { useRef } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion'
 import './ParallaxScroll.css'
 
 function ParallaxScroll() {
   const ref = useRef(null)
+  const prefersReducedMotion = useReducedMotion()
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start end', 'end start'],
   })
 
-  const slowLayerY = useTransform(scrollYProgress, [0, 1], ['-160px', '160px'])
-  const fastLayerY = useTransform(scrollYProgress, [0, 1], ['220px', '-220px'])
+  const slowLayerY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ['0px', '0px'] : ['-160px', '160px'],
+  )
+  const fastLayerY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    prefersReducedMotion ? ['0px', '0px'] : ['220px', '-220px'],
+  )
 
   return (
     <div ref={ref} className="parallax-section">

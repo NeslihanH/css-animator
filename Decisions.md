@@ -195,3 +195,26 @@ Rationale: keeps the always-visible sticky nav compact on mobile (one row)
 while still exposing all navigation; the hamburger-to-X morph and the
 back-button tap animation are deliberate micro-interactions, fitting for a
 site whose whole subject is animation.
+
+## D13 - `prefers-reduced-motion`: three layers, not one
+
+Context: M4.3. A single mechanism doesn't cover every animation technique
+used across M1-M3: Framer Motion's own `animate`/`whileHover`/`whileTap`/
+`initial-animate-exit` transitions are one category; `useScroll` +
+`useTransform` bound directly to a `style` prop (as in `ParallaxScroll`) are
+a second category that Framer Motion does not treat as "animations" for
+reduced-motion purposes; plain CSS `@keyframes`/`transition` (the spinner,
+skeleton pulse, hover color changes, hamburger icon morph) are a third,
+entirely outside Framer Motion's reach.
+Decision: `<MotionConfig reducedMotion="user">` wraps the app in `main.jsx`
+for category one; `ParallaxScroll` calls `useReducedMotion()` itself and
+zeroes its scroll-linked offsets for category two; a blanket
+`@media (prefers-reduced-motion: reduce) { *, *::before, *::after {
+animation-duration: 0.01ms !important; ... } }` in `index.css` for category
+three.
+Rationale: each category needed a different fix; relying on just one (e.g.
+assuming `MotionConfig` alone was enough) would have silently left the
+parallax example's scroll-linked motion - one of the more commonly-flagged
+motion-sickness triggers - untouched. Any future example using raw
+`useScroll`/`useTransform` needs its own `useReducedMotion()` check;
+`MotionConfig` will not catch it.
