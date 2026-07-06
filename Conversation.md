@@ -328,3 +328,23 @@ across M1-M3 are now live and working, each with code view + copy + download.
 M4 (Polish & Launch) is the only milestone left, and its scope was
 deliberately never locked in - time to go discuss it with the user now that
 M1-M3 are behind us, as agreed back at kickoff.
+
+## 2026-07-06 - M4 scoped, sticky nav fix
+
+Asked the user what M4 should cover; picked all four candidates: visual
+design pass, responsive/mobile check, `prefers-reduced-motion` support,
+README + publishing checklist. For the visual pass specifically, the user
+wants to see 2-3 concrete mockup options before committing to a direction
+(color palette, typography, card style all called out as things they dislike)
+rather than Claude just picking one - about to prepare those as an HTML
+artifact.
+
+Before that, user asked (mid-flow) to make the nav sticky so it stays visible
+on scroll. First attempt (`position: sticky` on `.nav`) silently failed to
+stick - root cause and fix in [[D10]]: `#root`'s `overflow-x: hidden`
+(a leftover safety net from the D7 width-bug debugging) was breaking
+sticky's scroll-tracking. Removed it; sticky now works, and the original
+width bug does not regress (its real fix, D7's `width: 100%` on `main`,
+already covers it).
+
+Next: prepare 2-3 visual design mockup options as an HTML artifact for M4.1.

@@ -113,3 +113,19 @@ part of the "UI'yi beğenmedim" feedback from M0.1 ahead of the full M4 visual
 pass). General rule for this codebase: `max-width` centers nothing by itself -
 always pair it with `margin: 0 auto` (or an equivalent centering rule) if the
 box also needs to be positioned centered, not just narrowed.
+
+## D10 - Removed `overflow-x: hidden` from `#root`; `Nav` is `position: sticky`
+
+Context: made `Nav` sticky (`position: sticky; top: 0`) so it stays visible
+while scrolling, per user request. It silently did not stick - traced to
+`#root`'s `overflow-x: hidden` (added in D7's debugging as a defensive safety
+net): any ancestor with `overflow` other than `visible` becomes sticky's
+containing block for scroll-tracking purposes, and since `#root` itself never
+actually scrolls (its height just grows with content; the document scrolls),
+sticky positioning relative to it never reactivates on scroll.
+Decision: removed `overflow-x: hidden` from `#root`.
+Rationale: the actual width bug (D7) was already fixed by giving `main` an
+explicit `width: 100%` - `overflow-x: hidden` on `#root` was an extra,
+ultimately unnecessary safety net from that debugging session, and it now
+conflicts with sticky positioning. Verified the width bug does not regress
+after removing it.
