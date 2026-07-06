@@ -218,3 +218,24 @@ parallax example's scroll-linked motion - one of the more commonly-flagged
 motion-sickness triggers - untouched. Any future example using raw
 `useScroll`/`useTransform` needs its own `useReducedMotion()` check;
 `MotionConfig` will not catch it.
+
+## D14 - v1.0.0: publishing checklist run, no findings needing a fix
+
+Context: M4.4, the last item in the original milestone plan. Ran the
+playbook's publishing checklist against the shipped files (`src/`,
+`index.html`, `README.md`): grepped for Turkish characters
+(`çğıİöşüÇĞÖŞÜ`) - none; grepped for em-dashes - none; grepped for
+secret-shaped strings (`api_key`, `secret`, `password`, `token`) and checked
+for `.env*` files - none (expected, this project never needed a backend or
+any credentials, per the original architecture decision). Also found and
+fixed two things unrelated to the checklist itself: `public/favicon.svg` was
+still the default Vite logo (purple, unrelated to "Studio Grain"), replaced
+with a small on-brand mark (an amber dot with a faint trailing arc, echoing
+the parallax example's "traveling light" motif); `public/icons.svg` was dead
+weight from the original scaffold (unused since the M0.1 cleanup) and was
+deleted.
+Decision: bumped `package.json` version to `1.0.0` and rewrote `README.md`
+(live link, full example list, stack, run/build instructions) to mark this
+as the first complete version.
+Rationale: closes out the milestone plan that was set at kickoff - every
+originally-planned example (11/11) and every M4 polish item is done.

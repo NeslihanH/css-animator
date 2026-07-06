@@ -426,3 +426,18 @@ and the parallax blobs stop moving.
 
 M4.3 is done. Next: M4.4 - README + final deploy + publishing check (the
 last item in the milestone plan).
+
+## 2026-07-07 - M4.4: v1.0.0
+
+Ran the playbook's publishing checklist (Turkish characters, em-dashes,
+secrets - see [[D14]]): clean on all three. Along the way noticed and fixed
+two things nobody had flagged: the favicon was still Vite's default purple
+logo, and `public/icons.svg` was dead weight left over from the very first
+scaffold. Replaced the favicon with a small on-brand mark, deleted the
+unused file, rewrote `README.md` properly (it had been a one-line
+placeholder since M0.1), and bumped `package.json` to `1.0.0`.
+
+This closes the milestone plan set at kickoff: M0-M4 all done, 11/11
+examples, each with working code view + copy + download, responsive, reduced-
+motion aware, and visually settled on "Studio Grain" after the Playground
+detour. Whatever comes next is new scope, not a gap in the original plan.
