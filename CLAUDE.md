@@ -24,12 +24,12 @@ decisions live here and in `Decisions.md`.
 
 ## Status
 
-**M0-M3 all done - 11/11 examples, live at
-`https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
-toggle with copy + download buttons. M4.1 (visual design, "Studio Grain"),
-M4.2 (responsive + mobile hamburger nav), and M4.3 (`prefers-reduced-motion`)
-done. Current milestone: M4 - Polish & Launch, M4.4 (README + publishing
-check) next - the last item.**
+**v1.0.0 - all of M0-M4 done, live at
+`https://neslihanh.github.io/css-animator/`. 11/11 examples, each with a
+"Show code" toggle with copy + download buttons. The originally-planned
+milestone list is complete; future work is whatever new examples or
+requests come up next (living roadmap, see the note at the bottom of this
+file).**
 
 Reduced motion (M4.3): `<MotionConfig reducedMotion="user">` wraps the app in
 `main.jsx`, covering every Framer Motion `animate`/`whileHover`/`whileTap`
@@ -108,13 +108,17 @@ Opens at `http://localhost:5173` by default.
   - [x] M3.2 - Animated toggle/switch
   - [x] M3.3 - Form input focus/error animation
   - [x] M3.4 - Animated loading spinner / skeleton loader
-- [ ] **M4 - Polish & Launch**
+- [x] **M4 - Polish & Launch**
   - [x] M4.1 - Visual design pass ("Studio Grain" direction, both themes; see D11)
   - [x] M4.2 - Responsive check (mobile hamburger menu + back-to-home button
         on `Nav`, replacing the awkward flex-wrap of 4 nav links; see D12)
   - [x] M4.3 - `prefers-reduced-motion` support (`MotionConfig` +
         `useReducedMotion` in `ParallaxScroll` + blanket CSS rule)
-  - [ ] M4.4 - README + final deploy + publishing check
+  - [x] M4.4 - README rewritten (live link, example list, stack, run/build),
+        `package.json` version bumped to `1.0.0`, custom favicon (replacing
+        the Vite default logo), unused `public/icons.svg` removed, publishing
+        checklist run (no Turkish characters, no em-dashes, no secrets - see
+        D14)
 
 Note: the example list is a living roadmap, not a hard ceiling - new animation
 ideas get slotted into M1/M2/M3 (or a new M5+) explicitly as they come up, never
