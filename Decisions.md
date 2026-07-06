@@ -173,3 +173,25 @@ fills) was too subtle to perceive at normal scroll speed - same class of bug
 as the M1.1 fade/slide tuning (D-adjacent, see Conversation.md): bumped to
 large pixel offsets (`±160px` / `±220px`) and made the blobs solid, low-blur,
 higher-opacity shapes.
+
+## D12 - Mobile nav: hamburger + collapsible menu, not a wrapping link row
+
+Context: at mobile widths, the nav's 4 links (`Home`, `Scroll Animations`,
+`Page Transitions`, `Micro-interactions`) don't fit on one line. Tried two
+CSS-only fixes first: letting the flex row wrap naturally (left the last link
+stranded alone on its own line, looked broken) and a deliberate 2x2 grid
+(looked intentional, but the user's real objection was that the *sticky* nav
+was now 2-3 lines tall, permanently eating mobile screen space while
+scrolling - a layout tweak couldn't fix that, only hiding the links could).
+Decision: below 640px, collapse the links behind a hamburger button
+(animated into an X via three `<span>`s rotating/fading, no icon library);
+tapping opens an `AnimatePresence` height/opacity-animated dropdown; the menu
+auto-closes on route change (`useEffect` keyed on `location.pathname`). Also
+added a circular back-to-home button (chevron icon, `whileTap` scale) next to
+the hamburger, shown only when not already on `/` - since the site's only
+"depth" is category page -> home, a literal "back" affordance means "home,"
+not browser history.
+Rationale: keeps the always-visible sticky nav compact on mobile (one row)
+while still exposing all navigation; the hamburger-to-X morph and the
+back-button tap animation are deliberate micro-interactions, fitting for a
+site whose whole subject is animation.

@@ -26,10 +26,9 @@ decisions live here and in `Decisions.md`.
 
 **M0-M3 all done - 11/11 examples, live at
 `https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
-toggle with copy + download buttons. M4.1 (visual design) done: "Studio
-Grain" direction (near-black/warm-paper, Georgia serif headings, single
-amber accent, thin hairlines, soft shadows), both themes. Current milestone:
-M4 - Polish & Launch, M4.2 (responsive check) next.**
+toggle with copy + download buttons. M4.1 (visual design, "Studio Grain")
+and M4.2 (responsive + mobile hamburger nav with a back-to-home button) done.
+Current milestone: M4 - Polish & Launch, M4.3 (`prefers-reduced-motion`) next.**
 
 Deploy note: `postbuild` script copies `dist/index.html` to `dist/404.html`
 so GitHub Pages serves the SPA shell (not a real 404) when a deep link like
@@ -98,7 +97,8 @@ Opens at `http://localhost:5173` by default.
   - [x] M3.4 - Animated loading spinner / skeleton loader
 - [ ] **M4 - Polish & Launch**
   - [x] M4.1 - Visual design pass ("Studio Grain" direction, both themes; see D11)
-  - [ ] M4.2 - Responsive check
+  - [x] M4.2 - Responsive check (mobile hamburger menu + back-to-home button
+        on `Nav`, replacing the awkward flex-wrap of 4 nav links; see D12)
   - [ ] M4.3 - `prefers-reduced-motion` support
   - [ ] M4.4 - README + final deploy + publishing check
 
