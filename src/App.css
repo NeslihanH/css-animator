@@ -4,6 +4,10 @@ main {
   margin: 0 auto;
   padding: 3rem 2.5rem 4rem;
   box-sizing: border-box;
+
+  @media (max-width: 640px) {
+    padding: 2rem 1.25rem 3rem;
+  }
 }
 
 .page-eyebrow {

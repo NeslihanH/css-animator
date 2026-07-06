@@ -385,4 +385,22 @@ this whole detour.
 
 M4.1 is done. Next: M4.2 - responsive/mobile check.
 
-Next: prepare 2-3 visual design mockup options as an HTML artifact for M4.1.
+## 2026-07-07 - M4.2: responsive check surfaces a real mobile nav problem
+
+Added defensive mobile CSS first (reduced padding on `main`/`.nav`, flex-wrap
+on the example card header, smaller parallax blobs below 480px) - user then
+tested on a real narrow viewport and found the actual problem: the 4 nav
+links don't fit one line. Two CSS-only attempts (natural flex-wrap, then a
+deliberate 2x2 grid) both missed the real complaint, which wasn't about how
+the wrap looked but that the sticky nav was now 2-3 lines tall, permanently
+eating screen space while scrolling on mobile. Fixed properly with a
+hamburger menu (see [[D12]]): links collapse behind a button below 640px,
+open into an animated dropdown, auto-close on navigation. User then asked for
+two more polish touches, both delivered: the hamburger morphs into an X on
+open (three `<span>`s animating `top`/`transform`/`opacity`) instead of
+staying static, and a circular back-to-home chevron button (with a
+`whileTap` scale) appears next to it whenever not already on `/` - first cut
+used a plain arrow-with-shaft icon, user found it "not modern," swapped for
+a bare chevron in a bordered circle.
+
+M4.2 is done. Next: M4.3 - `prefers-reduced-motion` support.
