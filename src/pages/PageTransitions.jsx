@@ -8,7 +8,8 @@ import ModalDemoSource from '../examples/ModalDemo.jsx?raw'
 function PageTransitions() {
   return (
     <div className="page">
-      <h1>Page Transitions</h1>
+      <span className="page-eyebrow">Page Transitions</span>
+      <h1>Every click,<br />a small scene change.</h1>
       <p className="page-subtitle">
         Animations that play when navigating between routes.
       </p>

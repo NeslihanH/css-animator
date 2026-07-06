@@ -129,3 +129,47 @@ explicit `width: 100%` - `overflow-x: hidden` on `#root` was an extra,
 ultimately unnecessary safety net from that debugging session, and it now
 conflicts with sticky positioning. Verified the width bug does not regress
 after removing it.
+
+## D11 - Visual identity: "Studio Grain" (supersedes D9's centering choice)
+
+Context: M4.1's visual design pass. First direction tried was "Playground"
+(bright, thick black outlines, hard offset "sticker" shadows, per-category
+colors) - built two full passes at it (fonts via Google Fonts after the first
+pass silently fell back to unavailable system fonts; colors switched from
+translucent tints to solid fills after they read "muddy" in dark mode) but
+the user rejected it outright both times, even correctly executed, as "cold"
+and not matching the approved mockup's energy once seen live. Presented two
+fresh directions (Studio Grain: dark, cinematic, serif display, single amber
+accent, film grain; Field Notes: light paper, typewriter mono, hot-pink
+highlighter marker) as a new mockup round - user picked Studio Grain, which
+was mocked up dark-only at first; user then asked for a light variant too,
+which was mocked up and approved before touching real code (lesson from the
+Playground misstep: show every theme variant as a mockup before implementing,
+don't invent one blind).
+Decision: implemented "Studio Grain" site-wide: `--bg`/`--text-h`/`--border`/
+`--accent` tokens in `src/index.css` (near-black `#0d0d0f` dark, warm paper
+`#f5f3ee` light, single amber accent `#ffb238`/`#b8720a`), Georgia serif for
+headings, thin 1px hairline borders + soft shadows instead of Playground's
+thick borders/hard shadows, and left-aligned content instead of site-wide
+centering.
+Rationale: matches what was actually approved in the mockup, twice validated
+(dark first, then light) before writing real CSS. Removes `.page { text-align:
+center }` from D9 - that centering choice belonged to a design language this
+project no longer uses; Studio Grain's asymmetric, editorial layout is
+deliberately left-aligned.
+
+Follow-up fixes after going live in the real codebase (mockups can't catch
+everything): skeleton loader and spinner track used `--accent-bg` (a ~10%
+opacity tint) which read as nearly invisible on the light warm-paper
+background - switched to `--social-bg`/`--border` for baseline visibility,
+keeping the accent only on the moving/active part. The film-grain texture was
+implemented as `#root::before` (`position: absolute`), which - being
+positioned while most page content is static - painted above the page's
+actual content in stacking order; moved it to `background-image` directly on
+`#root` instead, which paints as part of the element's own background and
+can never appear above content. The parallax scroll example's motion (`±15%`
+/ `±20%` of the blobs' own height, heavily blurred, low-opacity gradient
+fills) was too subtle to perceive at normal scroll speed - same class of bug
+as the M1.1 fade/slide tuning (D-adjacent, see Conversation.md): bumped to
+large pixel offsets (`±160px` / `±220px`) and made the blobs solid, low-blur,
+higher-opacity shapes.

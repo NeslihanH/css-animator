@@ -11,7 +11,8 @@ import ScrollProgressBarSource from '../examples/ScrollProgressBar.jsx?raw'
 function ScrollAnimations() {
   return (
     <div className="page">
-      <h1>Scroll Animations</h1>
+      <span className="page-eyebrow">Scroll Animations</span>
+      <h1>Things that move<br />when you do.</h1>
       <p className="page-subtitle">
         Animations that trigger as elements enter the viewport while scrolling.
       </p>

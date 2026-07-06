@@ -2,59 +2,60 @@
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  margin-top: 3rem;
-  padding-top: 2rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
   border-top: 1px solid var(--border);
 }
 
 .example-card:first-of-type {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .example-header {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.75rem;
 }
 
 .example-card h2 {
   margin: 0 0 0.4rem;
   font-size: 1.3rem;
+  font-weight: 400;
   color: var(--text-h);
 }
 
 .example-description {
   margin: 0;
-  max-width: 560px;
+  max-width: 460px;
+  font-size: 0.92rem;
 }
 
 .example-code-toggle {
   flex-shrink: 0;
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  font-size: 0.8rem;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 2px;
   cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
 }
 
 .example-code-toggle:hover {
-  box-shadow: var(--shadow);
+  color: var(--text-h);
+  border-color: var(--text);
 }
 
 .example-demo {
   width: 100%;
   min-width: 0;
   box-sizing: border-box;
-  border: 1px dashed var(--border);
-  border-radius: 12px;
-  padding: 2rem;
+  padding: 1rem 0;
 }
 
 .example-card .code-block {
-  margin: 0 0 1.5rem;
+  margin: 0 0 1.75rem;
 }

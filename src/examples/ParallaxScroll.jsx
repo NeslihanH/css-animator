@@ -9,8 +9,8 @@ function ParallaxScroll() {
     offset: ['start end', 'end start'],
   })
 
-  const slowLayerY = useTransform(scrollYProgress, [0, 1], ['-15%', '15%'])
-  const fastLayerY = useTransform(scrollYProgress, [0, 1], ['20%', '-20%'])
+  const slowLayerY = useTransform(scrollYProgress, [0, 1], ['-160px', '160px'])
+  const fastLayerY = useTransform(scrollYProgress, [0, 1], ['220px', '-220px'])
 
   return (
     <div ref={ref} className="parallax-section">

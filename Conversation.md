@@ -347,4 +347,42 @@ sticky's scroll-tracking. Removed it; sticky now works, and the original
 width bug does not regress (its real fix, D7's `width: 100%` on `main`,
 already covers it).
 
+## 2026-07-06/07 - M4.1: two rejected rounds, then "Studio Grain"
+
+Built and presented 3 mockup options (Terminal / Motion Lab / Playground) as
+an HTML artifact. User picked Playground. Implemented it site-wide - and it
+missed on nearly every front: the chosen display font (Futura/Century
+Gothic) silently fell back to a generic system font since neither is
+actually installed on most machines (fixed by loading Fredoka + Nunito Sans
+from Google Fonts - this IS the real deployed site, not an Artifact, so
+there's no CSP blocking font CDNs here); the category cards' and every M1-M3
+example's colored fill used a translucent accent tint that read as muddy
+brown against the dark-mode background (fixed by switching to solid pastel
+fills for category cards and neutral fills + colored borders for examples);
+the "Show code" button had drifted from black-outlined (as shown in the
+approved mockup) to accent-colored. Even after all three fixes landed, the
+user still didn't like it - "cold," and unlike the reference at all once seen
+live and compared via screenshot against the mockup.
+
+Rather than iterate a fourth time on Playground, asked what "modern, not
+corporate" meant and proposed two fresh, sharply different directions (Studio
+Grain: dark cinematic serif with a lone amber accent; Field Notes: warm-paper
+typewriter zine with a hot-pink highlighter). User picked Studio Grain - shown
+dark-only at first. Learned from the Playground miss: before writing any real
+CSS, also mocked up and got explicit approval on a light variant (warm paper,
+deepened amber for contrast, inverted grain) rather than inventing one blind
+and finding out later it didn't match what was approved. See [[D11]] for the
+full implementation and the three post-launch fixes (skeleton/spinner
+visibility, grain texture painting above content instead of behind it, and
+the parallax example's motion being imperceptibly subtle - same root cause
+class as the M1.1 fade-in tuning saga).
+
+Lesson banked for future visual work on this project: never implement a
+theme variant (dark, light, or otherwise) that hasn't been shown to the user
+as a mockup and explicitly approved first - guessing "it'll probably look
+fine" is exactly what produced the Playground dark-mode mismatch that started
+this whole detour.
+
+M4.1 is done. Next: M4.2 - responsive/mobile check.
+
 Next: prepare 2-3 visual design mockup options as an HTML artifact for M4.1.

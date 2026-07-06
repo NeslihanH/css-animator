@@ -13,8 +13,8 @@
   font-weight: 600;
   font-size: 1.2rem;
   color: var(--text-h);
-  background: var(--accent-bg);
-  border: 1px solid var(--accent-border);
-  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
   box-shadow: var(--shadow);
 }

@@ -1,7 +1,7 @@
 .parallax-section {
   position: relative;
   height: 70vh;
-  border-radius: 16px;
+  border-radius: 3px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -12,7 +12,7 @@
 .parallax-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(4px);
+  filter: blur(1px);
 }
 
 .parallax-blob-slow {
@@ -20,8 +20,8 @@
   height: 260px;
   left: 8%;
   top: 20%;
-  background: radial-gradient(circle at 35% 35%, var(--accent-bg), transparent 70%);
-  border: 1px solid var(--accent-border);
+  background: radial-gradient(circle at 35% 35%, var(--accent), transparent 75%);
+  opacity: 0.55;
 }
 
 .parallax-blob-fast {
@@ -29,7 +29,8 @@
   height: 160px;
   right: 12%;
   bottom: 15%;
-  background: radial-gradient(circle at 35% 35%, var(--accent-border), transparent 70%);
+  background: radial-gradient(circle at 35% 35%, var(--accent), transparent 75%);
+  opacity: 0.85;
 }
 
 .parallax-content {
@@ -42,6 +43,6 @@
   padding: 1.5rem 2rem;
   background: var(--bg);
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 3px;
   box-shadow: var(--shadow);
 }
