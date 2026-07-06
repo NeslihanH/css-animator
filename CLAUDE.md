@@ -26,9 +26,22 @@ decisions live here and in `Decisions.md`.
 
 **M0-M3 all done - 11/11 examples, live at
 `https://neslihanh.github.io/css-animator/`. Every example has a "Show code"
-toggle with copy + download buttons. M4.1 (visual design, "Studio Grain")
-and M4.2 (responsive + mobile hamburger nav with a back-to-home button) done.
-Current milestone: M4 - Polish & Launch, M4.3 (`prefers-reduced-motion`) next.**
+toggle with copy + download buttons. M4.1 (visual design, "Studio Grain"),
+M4.2 (responsive + mobile hamburger nav), and M4.3 (`prefers-reduced-motion`)
+done. Current milestone: M4 - Polish & Launch, M4.4 (README + publishing
+check) next - the last item.**
+
+Reduced motion (M4.3): `<MotionConfig reducedMotion="user">` wraps the app in
+`main.jsx`, covering every Framer Motion `animate`/`whileHover`/`whileTap`
+transition automatically. That does NOT cover raw `useScroll`/`useTransform`
+value bindings (they're direct value tracking, not "animations" to Framer
+Motion) - `ParallaxScroll.jsx` checks `useReducedMotion()` itself and zeroes
+its offsets when true. Plain CSS `@keyframes`/`transition` (spinner,
+skeleton, hover color changes, hamburger icon morph) are covered by a
+blanket `@media (prefers-reduced-motion: reduce)` rule in `index.css` that
+collapses all animation/transition durations to ~0. Any new example with its
+own `useTransform`/`useScroll` binding needs the same manual
+`useReducedMotion()` check - `MotionConfig` won't catch it.
 
 Deploy note: `postbuild` script copies `dist/index.html` to `dist/404.html`
 so GitHub Pages serves the SPA shell (not a real 404) when a deep link like
@@ -99,7 +112,8 @@ Opens at `http://localhost:5173` by default.
   - [x] M4.1 - Visual design pass ("Studio Grain" direction, both themes; see D11)
   - [x] M4.2 - Responsive check (mobile hamburger menu + back-to-home button
         on `Nav`, replacing the awkward flex-wrap of 4 nav links; see D12)
-  - [ ] M4.3 - `prefers-reduced-motion` support
+  - [x] M4.3 - `prefers-reduced-motion` support (`MotionConfig` +
+        `useReducedMotion` in `ParallaxScroll` + blanket CSS rule)
   - [ ] M4.4 - README + final deploy + publishing check
 
 Note: the example list is a living roadmap, not a hard ceiling - new animation

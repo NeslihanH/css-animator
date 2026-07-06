@@ -404,3 +404,25 @@ used a plain arrow-with-shaft icon, user found it "not modern," swapped for
 a bare chevron in a bordered circle.
 
 M4.2 is done. Next: M4.3 - `prefers-reduced-motion` support.
+
+## 2026-07-07 - M4.3: reduced motion, and how to actually test it
+
+Implemented the three-layer fix in [[D13]]: `MotionConfig` in `main.jsx`,
+`useReducedMotion()` inside `ParallaxScroll`, and a blanket CSS rule in
+`index.css` for plain-CSS animations.
+
+Testing hit a real-world snag: the user's macOS "Reduce motion" toggle
+wasn't where expected under Accessibility -> Display (it's been reorganized
+into its own "Motion" category on some macOS versions). Rather than keep
+guessing menu paths, checked via `defaults read com.apple.universalaccess
+reduceMotion` (came back unset) and offered the `defaults write` command
+directly - but toggling a real OS accessibility setting for a one-off test
+isn't ideal (needs a logout/restart to take effect, and it's a system-wide
+change outside this project). Switched to Chrome DevTools' Rendering panel
+("Emulate CSS media feature prefers-reduced-motion") instead, which flips
+the media query for the page only, no OS changes, no restart. User confirmed
+all three layers work: page transitions and hover/tap effects go instant,
+and the parallax blobs stop moving.
+
+M4.3 is done. Next: M4.4 - README + final deploy + publishing check (the
+last item in the milestone plan).
